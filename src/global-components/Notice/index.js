@@ -14,7 +14,7 @@ let createInstance = (props = {}) => {
     }
   })
 }
-Vue.prototype.$Notice = {
+Vue.prototype.$notice = {
   open(props) {
     let instance = createInstance(props)
     noticeInstances.add(instance)

@@ -16,7 +16,7 @@
 <script>
 export default {
   name: 'notice',
-  props: ['title', 'content', 'onClosed'],
+  props: ['title', 'content', 'duration', 'onClosed'],
   data: () => ({
     closeTimer: null
   }),
@@ -27,9 +27,9 @@ export default {
     })
   },
   mounted() {
-    // this.closeTimer = setTimeout(() => {
-    //   this.close()
-    // }, 3000)
+    this.closeTimer = setTimeout(() => {
+      this.close()
+    }, this.duration || 3000)
   },
   destroyed() {
     if (this.onClosed) {

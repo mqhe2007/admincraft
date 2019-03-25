@@ -2,27 +2,37 @@ import Vue from 'vue'
 import axios from 'axios'
 // import errorHandler from './errorHandler'
 
-export default config => {
-  if (!config.factorOfSuccess.key || !config.factorOfSuccess.value)
-    throw new Error('factorOfSuccess必须配置。')
+export default (config = {}) => {
+  if (config.factorOfSuccess) {
+    if (!config.factorOfSuccess.key || !config.factorOfSuccess.value)
+      throw new Error('factorOfSuccess必须配置key和value。')
+  }
   let instance = axios.create(config)
   // 拦截器
   instance.interceptors.response.use(
     response => {
-      // 业务失败的情况
-      if (
-        response.data[instance.defaults.factorOfSuccess.key] !==
-        instance.defaults.factorOfSuccess.value
-      ) {
+      // 判断业务状态结果
+      let businessStatusResult = false
+      let businessStatusCode =
+        response.data[instance.defaults.factorOfSuccess.key]
+      if (instance.defaults.factorOfSuccess) {
+        businessStatusResult =
+          businessStatusCode === instance.defaults.factorOfSuccess.value
+      } else {
+        businessStatusResult = response.data.code === 200
+      }
+      if (businessStatusResult) {
+        // 业务成功时直接返回服务器响应的数据
+        return response.data
         // errorHandler({ response })
+      } else {
+        // 业务失败的情况
         Vue.prototype.$eventBus.emit(
           'HTTP_ERROR',
-          '业务失败：' + response.data.code
+          '业务失败：' + businessStatusCode
         )
         return Promise.reject(response.data)
       }
-      // 业务成功时直接返回服务器响应的数据
-      return response.data
     },
     error => {
       if (error.response) {

@@ -11,14 +11,23 @@
              @click="toRouter(tab.path)">
           {{tab.meta.title || '未命名页面'}}
           <span class="closeBtn"
-                @click.stop="deleteOne(tab)"><i class="iconfont icon-delete"></i></span>
+                @click.stop="deleteOne(tab)">
+            <svg class="icon"
+                 aria-hidden="true">
+              <use xlink:href="#icon-delete"></use>
+            </svg>
+          </span>
         </div>
       </div>
       <div class="tools">
         <span class="item"
               @click="clearTabs"
-              title="删除全部"><i class="iconfont icon-clear"></i></span>
-        <!-- <span class="item"><i class="iconfont icon-Fullscreen"></i></span> -->
+              title="删除全部">
+          <svg class="icon"
+               aria-hidden="true">
+            <use xlink:href="#icon-clear"></use>
+          </svg>
+        </span>
       </div>
     </div>
   </div>
@@ -152,7 +161,7 @@ export default {
         .closeBtn
           margin-left 5px
 
-          .iconfont
+          .icon
             font-size 12px
             color #999
 

@@ -19,7 +19,10 @@
             <span :size="15"
                   class="deleteBtn"
                   @click="deleteItem(index)">
-              <i class="iconfont icon-delete"></i>
+              <svg class="icon"
+                   aria-hidden="true">
+                <use xlink:href="#icon-delete"></use>
+              </svg>
             </span>
           </div>
           <div class="content">{{item.content}}</div>
@@ -143,7 +146,7 @@ export default {
         .deleteBtn
           display none
 
-          .iconfont
+          .icon
             font-size 12px
 
       &:hover

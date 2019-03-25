@@ -5,8 +5,11 @@
       <div class="content">{{content}}</div>
     </div>
     <div class="right">
-      <span class="iconfont icon-delete"
-            @click="close"></span>
+      <svg class="icon"
+           @click="close"
+           aria-hidden="true">
+        <use xlink:href="#icon-delete"></use>
+      </svg>
     </div>
   </div>
 </template>
@@ -17,7 +20,7 @@ export default {
   data: () => ({
     closeTimer: null
   }),
-  created(){
+  created() {
     this.$store.commit('noticeCenter/addNotice', {
       title: this.title,
       content: this.content

@@ -2,8 +2,11 @@
   <div class="dialog boxShadow">
     <div class="top">
       <span class="title">{{title}}</span>
-      <span class="iconfont icon-delete"
-            @click="close"></span>
+      <svg class="icon"
+           @click="close"
+           aria-hidden="true">
+        <use xlink:href="#icon-delete"></use>
+      </svg>
     </div>
     <div class="content">
       <component :is="{render}"></component>

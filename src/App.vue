@@ -47,8 +47,8 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './style/iconfont.css'
-@import './style/theme.css'
+@import './style/theme'
+@import './style/iconfont'
 
 *
   margin 0

@@ -2,7 +2,10 @@
   <!-- 用户信息面板 -->
   <div class="userCenterEntry">
     <div class="avatar">
-      <i class="iconfont icon-avatar"></i>
+      <svg class="icon"
+           aria-hidden="true">
+        <use xlink:href="#icon-avatar"></use>
+      </svg>
     </div>
     <div class="panel boxShadow">
       <p class="userName">{{$store.state.user.info.userName}}</p>
@@ -31,7 +34,7 @@ export default {
   .avatar
     text-align center
 
-    .iconfont
+    .icon
       font-size 35px
 
   .panel

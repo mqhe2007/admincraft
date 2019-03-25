@@ -16,7 +16,8 @@ import Http from './methods/Http'
 import customDirective from './custom-directive'
 // 导入插件
 import './plugins'
-
+// iconfont
+import './iconfont'
 // 自动加载全局组件
 const requireComponent = require.context(
   './global-components',

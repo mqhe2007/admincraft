@@ -3,11 +3,16 @@
        :class="{menuItemEnd: isEnd, active: itemData.active}">
     <div class="title"
          @click="clickTitle">
-      <span class="iconfont"
-            :class="'icon-' + itemData.icon"></span>
+      <svg class="icon"
+           aria-hidden="true">
+        <use :xlink:href="'#icon-' + itemData.icon"></use>
+      </svg>
       <span>{{itemData.title}}</span>
-      <span class="iconfont icon-down expandPointer"
-            v-if="!isEnd"></span>
+      <svg class="icon expandPointer"
+           v-if="!isEnd"
+           aria-hidden="true">
+        <use xlink:href="#icon-down"></use>
+      </svg>
     </div>
     <div v-if="!isEnd"
          class="menuList">
@@ -83,8 +88,8 @@ export default {
     &:hover
       background linear-gradient(to right, #011526, #4192D9)
 
-    .iconfont
-      font-size 14px
+    .icon
+      font-size 17px
       margin-right 5px
 
     .expandPointer

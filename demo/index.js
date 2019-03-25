@@ -17,7 +17,7 @@ let app = new Admincraft({
       value: true
     }
   }
-})
+}).vue
 app.$addRoutes(routes)
 app.$addMenus(menus)
 app.$mount(el)

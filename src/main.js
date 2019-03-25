@@ -27,51 +27,55 @@ const requireComponent = require.context(
 requireComponent.keys().forEach(fileName => {
   requireComponent(fileName)
 })
+Vue.use(Meta)
 let defaultOptions = { title: '', logo: {}, modules: [], http: {}, router: {} }
-let Admincraft = options => {
-  let instanceOptions = { ...defaultOptions, ...options }
-  Vue.use(Meta)
-  let router = new Router()
-  let store = new Store()
-  // 保存实例化配置
-  store.commit('instance/setOptions', instanceOptions)
+class Admincraft {
+  constructor(options) {
+    this.instanceOptions = { ...defaultOptions, ...options }
+    this.router = new Router()
+    this.store = new Store()
+    this.store.commit('instance/setOptions', this.instanceOptions)
+    Vue.prototype.$addRoutes = new AddRoutes(this.router, this.store)
+    Vue.prototype.$addStore = new AddStore(this.store)
+    Vue.prototype.$addMenus = new AddMenus(this.store)
+    Vue.prototype.$addDynamicComponent = new AddDynamicComponent(this.store).add
+    Vue.prototype.$removeDynamicComponent = new AddDynamicComponent(
+      this.store
+    ).remove
+    Vue.prototype.$http = new Http(this.instanceOptions.http)
+    Vue.prototype.$addRemoteLib = new AddRemoteLib()
+    Vue.prototype.$modifyHomepage = (routeName, cb) => {
+      this.store.commit('instance/setHomeRouteName', routeName)
+      if (cb && typeof cb === 'function') cb()
+    }
+    // 自定义指令
+    customDirective(Vue, this.store)
 
-  Vue.prototype.$addRoutes = new AddRoutes(router, store)
-  Vue.prototype.$addStore = new AddStore(store)
-  Vue.prototype.$addMenus = new AddMenus(store)
-  Vue.prototype.$addDynamicComponent = new AddDynamicComponent(store).add
-  Vue.prototype.$removeDynamicComponent = new AddDynamicComponent(store).remove
-  Vue.prototype.$http = new Http(instanceOptions.http)
-  Vue.prototype.$addRemoteLib = new AddRemoteLib()
-  Vue.prototype.$modifyHomepage = (routeName, cb) => {
-    store.commit('instance/setHomeRouteName', routeName)
-    if (cb && typeof cb === 'function') cb()
-  }
-  // 自定义指令
-  customDirective(Vue, store)
+    if (this.instanceOptions.modules) {
+      this.instanceOptions.modules.forEach(module => {
+        module(Vue)
+      })
+    }
 
-  if (instanceOptions.modules) {
-    instanceOptions.modules.forEach(module => {
-      module(Vue)
+    this.router.beforeResolve((to, from, next) => {
+      // console.log(to)
+      if (to.matched.length > 0) {
+        next()
+      } else {
+        next({ name: 'error' })
+      }
+    })
+
+    // 创建Vue实例
+    this.vue = new Vue({
+      router: this.router,
+      store: this.store,
+      render: h => h(App)
     })
   }
-
-  router.beforeResolve((to, from, next) => {
-    // console.log(to)
-    if (to.matched.length > 0) {
-      next()
-    } else {
-      next({ name: 'error' })
-    }
-  })
-
-  // 创建Vue实例
-  return new Vue({
-    router,
-    store,
-    render: h => h(App)
-  })
+  use(vuePlugin) {
+    Vue.use(vuePlugin)
+  }
 }
-Admincraft.use = p => Vue.use(p)
 
 export default Admincraft

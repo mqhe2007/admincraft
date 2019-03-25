@@ -1,0 +1,43 @@
+{
+  "name": "admincraft",
+  "version": "0.1.0-alpha",
+  "main": "dist/main.js",
+  "private": false,
+  "scripts": {
+    "serve": "NODE_ENV=development webpack-dev-server --open",
+    "build": "NODE_ENV=production webpack --progress",
+    "docs:dev": "vuepress dev vuepress",
+    "docs:build": "vuepress build vuepress"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.0",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2",
+    "vue-loader": "^15.7.0",
+    "vue-style-loader": "^4.1.2",
+    "vuepress": "^0.14.10",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "better-scroll": "^1.15.0",
+    "localforage": "^1.7.3",
+    "vue": "^2.6.9",
+    "vue-meta": "^1.5.8",
+    "vue-router": "^3.0.2",
+    "vue-template-compiler": "^2.6.9",
+    "vuex": "^3.1.0"
+  },
+  "resolutions": {
+    "webpack-dev-middleware": "3.6.0"
+  }
+}

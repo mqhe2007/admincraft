@@ -11,7 +11,7 @@ let createInstance = (props = {}) => {
     }
   })
 }
-Vue.prototype.$Dialog = {
+Vue.prototype.$dialog = {
   open(props) {
     let instance = createInstance(props)
     instances.add(instance)

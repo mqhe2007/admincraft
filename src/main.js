@@ -27,26 +27,21 @@ const requireComponent = require.context(
 requireComponent.keys().forEach(fileName => {
   requireComponent(fileName)
 })
-
-let Admincraft = (options = { title: '', logo: {}, modules: [], http: {} }) => {
+let defaultOptions = { title: '', logo: {}, modules: [], http: {}, router: {} }
+let Admincraft = options => {
+  let instanceOptions = { ...defaultOptions, ...options }
   Vue.use(Meta)
   let router = new Router()
   let store = new Store()
   // 保存实例化配置
-  store.commit('instance/setOptions', options)
-  // 在所有组件内守卫和异步路由组件被解析之后，在导航被确认之前调用。
-  router.beforeResolve((to, from, next) => {
-    // console.log(to)
-    if (to.matched.length > 0) return next()
-  })
+  store.commit('instance/setOptions', instanceOptions)
 
   Vue.prototype.$addRoutes = new AddRoutes(router, store)
   Vue.prototype.$addStore = new AddStore(store)
   Vue.prototype.$addMenus = new AddMenus(store)
   Vue.prototype.$addDynamicComponent = new AddDynamicComponent(store).add
   Vue.prototype.$removeDynamicComponent = new AddDynamicComponent(store).remove
-  Vue.prototype.$http = new Http(options.http)
-  // Vue.prototype.$addConst = new AddConst(Vue)
+  Vue.prototype.$http = new Http(instanceOptions.http)
   Vue.prototype.$addRemoteLib = new AddRemoteLib()
   Vue.prototype.$modifyHomepage = (routeName, cb) => {
     store.commit('instance/setHomeRouteName', routeName)
@@ -55,12 +50,21 @@ let Admincraft = (options = { title: '', logo: {}, modules: [], http: {} }) => {
   // 自定义指令
   customDirective(Vue, store)
 
-
-  if (options.modules) {
-    options.modules.forEach(module => {
+  if (instanceOptions.modules) {
+    instanceOptions.modules.forEach(module => {
       module(Vue)
     })
   }
+
+  router.beforeResolve((to, from, next) => {
+    // console.log(to)
+    if (to.matched.length > 0) {
+      next()
+    } else {
+      next({ name: 'error' })
+    }
+  })
+
   // 创建Vue实例
   return new Vue({
     router,

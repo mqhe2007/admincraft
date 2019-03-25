@@ -5,9 +5,7 @@ export default {
       userName: '张三'
     },
     permissions: ['showcase_error'],
-    modules: {
-      showcase: 'http://127.0.0.1:8887/showcase.umd.js'
-    }
+    modules: {}
   },
   mutations: {
     setUserInfo(state, data) {

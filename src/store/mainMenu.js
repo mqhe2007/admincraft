@@ -38,7 +38,12 @@ export default {
         } else {
           // 解析菜单路径
           let parents = item.parents.split('/')
-          findMenuByParent(parents, 0, state.menus).children.push(item)
+          let target = findMenuByParent(parents, 0, state.menus)
+          if (!target)
+            throw new Error(
+              '父级菜单' + item.parents + '未找到！菜单将被丢弃。'
+            )
+          target.children.push(item)
         }
       })
       state.menus = MenusSort(state.menus)

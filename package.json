@@ -1,8 +1,20 @@
 {
   "name": "admincraft",
   "version": "0.1.0-alpha",
+  "description": "Admincraft is a Vue-based mid-background application quick build tool",
+  "author": "mqhe2007 <122274389@qq.com>",
+  "homepage": "https://mengqinghe.com",
   "main": "dist/main.js",
-  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "admincraft",
+    "management"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mqhe2007/admincraft"
+  },
   "scripts": {
     "serve": "NODE_ENV=development webpack-dev-server --open",
     "build": "NODE_ENV=production webpack --progress",

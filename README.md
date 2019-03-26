@@ -17,13 +17,13 @@ yarn add admincraft
 ``` javascript
 
 // 导入Admincraft构造函数
-import { Admincraft } from 'admincraft'
+import Admincraft from 'admincraft'
 // 创建挂载DOM
 let appElement = document.createElement('div')
 document.body.appendChild(appElement)
 // 实例化
 let admincraft = new Admincraft()
-admincraft.$mount(appElement)
+admincraft.vue.$mount(appElement)
 
 ```
 

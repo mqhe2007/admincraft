@@ -1,23 +1,28 @@
-import Admincraft from '../src/main'
-import routes from './routes'
-import menus from './menus'
+import Admincraft from '../src/'
+import init from './init'
 let el = document.createElement('div')
 document.body.appendChild(el)
 
-let app = new Admincraft({
+let admincraft = new Admincraft({
   title: 'admincraft',
   logo: {
     image: '',
     text: ''
   },
-  modules: [],
+  modules: [init],
   http: {
     factorOfSuccess: {
       key: 'ok',
       value: true
     }
+  },
+  router: {
+    beforeResolve: (to, from, next) => {
+      // console.log(to)
+      if (to.matched.length > 0) {
+        next()
+      }
+    }
   }
-}).vue
-app.$addRoutes(routes)
-app.$addMenus(menus)
-app.$mount(el)
+})
+admincraft.$mount(el)

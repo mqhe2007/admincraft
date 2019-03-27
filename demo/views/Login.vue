@@ -40,7 +40,7 @@ export default {
           })
           .catch(() => {})
       } else {
-        this.$Dialog.open({
+        this.$dialog.open({
           title: '提示：',
           render: h => h('p', '请在用户名和密码框中输入任意值模拟登录。')
         })

@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry:
-    process.env.NODE_ENV === 'production' ? './src/main.js' : './demo/index.js',
+    process.env.NODE_ENV === 'production' ? './src/index.js' : './demo/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -16,6 +16,10 @@ module.exports = {
   },
   mode: process.env.NODE_ENV,
   resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@root': path.resolve(__dirname)
+    },
     mainFiles: ['index'],
     extensions: ['.js', '.vue']
   },

@@ -23,7 +23,7 @@ let appElement = document.createElement('div')
 document.body.appendChild(appElement)
 // 实例化
 let admincraft = new Admincraft()
-admincraft.vue.$mount(appElement)
+admincraft.$mount(appElement)
 
 ```
 

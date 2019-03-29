@@ -20,7 +20,6 @@ class Admincraft {
         module(vueApp)
       })
     }
-    router.replace(location.hash.replace('#/', ''))
     return vueApp
   }
   static use(vuePlugin) {

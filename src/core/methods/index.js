@@ -9,6 +9,7 @@ import http from './http/'
 import modifyHome from './modifyHome'
 import eventBus from './eventBus'
 import moduleLoader from './module-loader/'
+import addLayout from './addLayout'
 export default (Vue, { router, store, instanceOptions }) => {
   Vue.prototype.$addRoutes = addRoutes(router, store)
   Vue.prototype.$addStore = addStore(store)
@@ -20,4 +21,5 @@ export default (Vue, { router, store, instanceOptions }) => {
   Vue.prototype.$Scroll = BScroll
   Vue.prototype.$eventBus = eventBus
   Vue.prototype.$moduleLoader = moduleLoader
+  Vue.prototype.$addLayout = addLayout(Vue)
 }

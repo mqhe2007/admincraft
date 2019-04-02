@@ -4,6 +4,7 @@ let el = document.createElement('div')
 document.body.appendChild(el)
 
 let admincraft = new Admincraft({
+  hasUI: false,
   title: 'admincraft',
   logo: {
     image: '',
@@ -19,9 +20,7 @@ let admincraft = new Admincraft({
   router: {
     beforeResolve: (to, from, next) => {
       // console.log(to)
-      if (to.matched.length > 0) {
-        next()
-      }
+      next()
     }
   }
 })

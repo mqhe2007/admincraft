@@ -11,7 +11,7 @@ const defaultOptions = {
 class Admincraft {
   constructor(options) {
     const instanceOptions = { ...defaultOptions, ...options }
-    const router = new Router(instanceOptions.router)
+    const router = new Router(instanceOptions)
     const store = new Store()
     store.commit('app/setOptions', instanceOptions)
     const vueApp = new VueApp({ router, store, instanceOptions })

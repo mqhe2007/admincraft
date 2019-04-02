@@ -29,13 +29,22 @@ export default {
     }
   },
   watch: {
+    '$store.state.app.options.hasUI': {
+      handler(n) {
+        if (n) return (this.layout = 'default')
+        this.layout = 'blank'
+      },
+      immediate: true
+    },
     // 监听懒加载的路由对象，选择布局，不可用computed方法，因为懒加载是异步的。
     $route: {
       handler(n) {
-        this.layout =
-          n.meta.layout ||
-          (n.matched[0] && n.matched[0].meta.layout) ||
-          'default'
+        if (this.$store.state.app.options.hasUI) {
+          this.layout =
+            n.meta.layout ||
+            (n.matched[0] && n.matched[0].meta.layout) ||
+            'default'
+        }
       },
       deep: true,
       immediate: true

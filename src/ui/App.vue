@@ -7,16 +7,9 @@
 </template>
 
 <script>
-import Default from './layout/Default.vue'
-import Blank from './layout/Blank.vue'
-import Error from './layout/Error.vue'
+
 export default {
   name: 'app',
-  components: {
-    Default,
-    Blank,
-    Error
-  },
   metaInfo() {
     return {
       title: `${this.$route.meta.title || '未命名页面'}`,

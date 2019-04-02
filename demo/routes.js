@@ -9,5 +9,14 @@ export default [
       layout: 'blank'
     },
     component: Login
+  },
+  {
+    path: '/layoutDemo',
+    name: 'layoutDemo',
+    meta: {
+      NonMenu: true,
+      title: '布局演示',
+      layout: 'default'
+    }
   }
 ]

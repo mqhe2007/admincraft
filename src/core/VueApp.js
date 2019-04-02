@@ -18,7 +18,7 @@ export default class VueApp {
       render: h => h(App)
     })
   }
-  static use(vuePlugin) {
-    Vue.use(vuePlugin)
+  static use(vuePlugin, options) {
+    Vue.use(vuePlugin, options)
   }
 }

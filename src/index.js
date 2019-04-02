@@ -22,8 +22,8 @@ class Admincraft {
     }
     return vueApp
   }
-  static use(vuePlugin) {
-    VueApp.use(vuePlugin)
+  static use(vuePlugin, options) {
+    VueApp.use(vuePlugin, options)
   }
 }
 

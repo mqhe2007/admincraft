@@ -4,7 +4,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry:
-    process.env.NODE_ENV === 'production' ? './src/index.js' : './demo/index.js',
+    process.env.NODE_ENV === 'production'
+      ? './src/index.js'
+      : './demo/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
@@ -39,7 +41,15 @@ module.exports = {
       },
       {
         test: /\.styl(us)?$/,
-        use: ['vue-style-loader', 'css-loader', 'stylus-loader']
+        use: [
+          'vue-style-loader',
+          {
+            loader: 'css-loader',
+            options: { importLoaders: 2 }
+          },
+          'postcss-loader',
+          'stylus-loader'
+        ]
       },
       {
         test: /\.(jpg|jpeg|png|gif|svg)$/,

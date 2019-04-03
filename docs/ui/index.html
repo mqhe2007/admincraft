@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>界面 | Admincraft</title>
-    <meta name="description" content="中后台应用快速搭建工具">
+    <meta name="description" content="一个支持模块化分布部署和加载的 Vue Admin">
     
     
-    <link rel="preload" href="/admincraft/assets/css/0.styles.01a8d6d9.css" as="style"><link rel="preload" href="/admincraft/assets/js/app.ab59cefb.js" as="script"><link rel="preload" href="/admincraft/assets/js/11.9464ee89.js" as="script"><link rel="prefetch" href="/admincraft/assets/js/10.4062a110.js"><link rel="prefetch" href="/admincraft/assets/js/12.6093ce8a.js"><link rel="prefetch" href="/admincraft/assets/js/2.6273f23d.js"><link rel="prefetch" href="/admincraft/assets/js/3.eb50e702.js"><link rel="prefetch" href="/admincraft/assets/js/4.5150e570.js"><link rel="prefetch" href="/admincraft/assets/js/5.4385c338.js"><link rel="prefetch" href="/admincraft/assets/js/6.439d4593.js"><link rel="prefetch" href="/admincraft/assets/js/7.3896eef9.js"><link rel="prefetch" href="/admincraft/assets/js/8.2e616cf2.js"><link rel="prefetch" href="/admincraft/assets/js/9.605e5157.js">
-    <link rel="stylesheet" href="/admincraft/assets/css/0.styles.01a8d6d9.css">
+    <link rel="preload" href="/admincraft/assets/css/0.styles.8b4e8c53.css" as="style"><link rel="preload" href="/admincraft/assets/js/app.ae0791d3.js" as="script"><link rel="preload" href="/admincraft/assets/js/9.32bc1b78.js" as="script"><link rel="prefetch" href="/admincraft/assets/js/10.7c87bb2d.js"><link rel="prefetch" href="/admincraft/assets/js/2.d44b6d39.js"><link rel="prefetch" href="/admincraft/assets/js/3.86c2b9aa.js"><link rel="prefetch" href="/admincraft/assets/js/4.2a1af5d2.js"><link rel="prefetch" href="/admincraft/assets/js/5.36104c6d.js"><link rel="prefetch" href="/admincraft/assets/js/6.06e00cdf.js"><link rel="prefetch" href="/admincraft/assets/js/7.b034600c.js"><link rel="prefetch" href="/admincraft/assets/js/8.2cf949aa.js">
+    <link rel="stylesheet" href="/admincraft/assets/css/0.styles.8b4e8c53.css">
   </head>
   <body>
     <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/admincraft/" class="home-link router-link-active"><!----> <span class="site-name">Admincraft</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/admincraft/guide/" class="nav-link">指南</a></div><div class="nav-item"><a href="/admincraft/options/" class="nav-link">配置</a></div><div class="nav-item"><a href="/admincraft/api/" class="nav-link">API</a></div><div class="nav-item"><a href="/admincraft/ui/" class="nav-link router-link-exact-active router-link-active">组件</a></div><div class="nav-item"><a href="/admincraft/appendix/" class="nav-link">附录</a></div><div class="nav-item"><a href="/admincraft/qa/" class="nav-link">常见问题</a></div><div class="nav-item"><a href="https://github.com/mqhe2007/admincraft" target="_blank" rel="noopener noreferrer" class="nav-link external">
@@ -19,7 +19,7 @@
   title<span class="token punctuation">:</span> <span class="token string">'消息通知标题'</span><span class="token punctuation">,</span>
   content<span class="token punctuation">:</span> <span class="token string">'消息通知内容'</span><span class="token punctuation">,</span>
   duration<span class="token punctuation">:</span> <span class="token number">5000</span><span class="token punctuation">,</span> <span class="token comment">// 可选</span>
-  onClosed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">onClosed</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'notice已关闭'</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
@@ -27,11 +27,11 @@
 <span class="token keyword">this</span><span class="token punctuation">.</span>$dialog<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   title<span class="token punctuation">:</span> <span class="token string">'标题'</span><span class="token punctuation">,</span>
   render<span class="token punctuation">:</span> component<span class="token punctuation">,</span>
-  onClosed<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token function-variable function">onClosed</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'dialog已关闭'</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
-    <script src="/admincraft/assets/js/app.ab59cefb.js" defer></script><script src="/admincraft/assets/js/11.9464ee89.js" defer></script>
+    <script src="/admincraft/assets/js/app.ae0791d3.js" defer></script><script src="/admincraft/assets/js/9.32bc1b78.js" defer></script>
   </body>
 </html>

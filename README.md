@@ -1,8 +1,8 @@
 # Admincraft
 
-Admincraft 是一个基于Vue的中后台应用快速搭建工具。
+Admincraft是一个支持模块化分布部署和加载的vue admin。
 
-Admincraft is a Vue-based mid-background application quick build tool.
+Admincraft is a vue admin that supports modular distribution deployment and loading.
 
 Admincraft 名称借鉴自“Minecraft”。也是希望 Admincraft 能够像“Minecraft”一样成为一个灵活自由强大的工具，为中后台应用的快速开发寻找一个新的方式。
 

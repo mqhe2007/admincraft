@@ -1,15 +1,17 @@
 {
   "name": "admincraft",
   "version": "0.4.4-alpha",
-  "description": "Admincraft is a Vue-based mid-background application quick build tool",
+  "description": "Admincraft is a vue admin that supports modular distribution deployment and loading.",
   "author": "mqhe2007 <122274389@qq.com>",
   "homepage": "https://mengqinghe.com",
   "main": "dist/main.js",
   "license": "MIT",
   "keywords": [
     "vue",
-    "admincraft",
-    "management"
+    "admin",
+    "vue-admin",
+    "vue-ui",
+    "admincraft"
   ],
   "repository": {
     "type": "git",
@@ -48,7 +50,7 @@
     "@babel/polyfill": "^7.4.3",
     "axios": "^0.18.0",
     "better-scroll": "^1.15.0",
-    "vue": "^2.6.10",
+    "vue": "^2.6.9",
     "vue-meta": "^1.5.8",
     "vue-router": "^3.0.2",
     "vuex": "^3.1.0"

@@ -4,7 +4,7 @@ let el = document.createElement('div')
 document.body.appendChild(el)
 
 let admincraft = new Admincraft({
-  hasUI: false,
+  hasUI: true,
   title: 'admincraft',
   logo: {
     image: '',

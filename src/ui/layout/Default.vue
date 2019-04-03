@@ -1,11 +1,13 @@
 <template>
   <div class="dashboard">
-    <CHeader></CHeader>
+    <CHeader class="header"></CHeader>
     <div class="body">
       <CSidebar></CSidebar>
       <div class="right">
         <CTabBar></CTabBar>
-        <router-view class="pageWrapper"></router-view>
+        <div class="pageWrapper">
+          <router-view></router-view>
+        </div>
       </div>
       <CNoticeCenter></CNoticeCenter>
     </div>
@@ -41,6 +43,10 @@ export default {
   width 100%
   height 100%
 
+  .header
+    height 60px
+    flex 0 0 60px
+
   .body
     display flex
     position relative
@@ -51,7 +57,9 @@ export default {
       display flex
       flex auto
       flex-flow column
+      height 100%
       overflow hidden
+
     .pageWrapper
       flex auto
       padding 10px

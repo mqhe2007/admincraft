@@ -8,6 +8,7 @@ export default app => {
   // 注册路由
   app.$addRoutes(routes, () => {})
   // 注册菜单
+  app.$addMenus(routes, () => {})
   app.$addMenus(menus, () => {})
 
   console.log(

@@ -1,4 +1,5 @@
 import Login from './views/Login.vue'
+import Scroll from './views/scroll/'
 export default [
   {
     path: '/login',
@@ -11,12 +12,11 @@ export default [
     component: Login
   },
   {
-    path: '/layoutDemo',
-    name: 'layoutDemo',
+    path: '/scroll',
+    name: 'scroll',
     meta: {
-      NonMenu: true,
-      title: '布局演示',
-      layout: 'default'
-    }
+      title: '滚动演示'
+    },
+    component: Scroll
   }
 ]

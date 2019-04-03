@@ -47,8 +47,6 @@ export default {
 <style lang="stylus">
 .header
   display flex
-  height 60px
-  flex 0 0 60px
   width 100%
   user-select none
   background #fff

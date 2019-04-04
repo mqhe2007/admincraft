@@ -1,4 +1,3 @@
-import Vue from 'vue'
 import Vuex from 'vuex'
 import dynamicComponent from './dynamicComponent'
 import tabBar from './tabBar'
@@ -9,7 +8,7 @@ import app from './app'
 
 
 
-export default () => {
+export default (Vue) => {
   Vue.use(Vuex)
   return new Vuex.Store({
     modules: {

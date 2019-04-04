@@ -247,4 +247,12 @@ this.$moduleLoader({
 
 ## 实例 API / $http
 
+转发`axios`配置
+
 用法参见：[axios 官方文档](https://github.com/axios/axios)
+
+## 实例 API / $Scroll
+
+转发`better-scroll`配置，创建一个更像原生应用的滚动盒子。
+
+用法参见：[better-scroll 官方文档](https://ustbhuangyi.github.io/better-scroll/#/zh)

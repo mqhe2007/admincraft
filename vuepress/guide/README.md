@@ -8,6 +8,22 @@ Admincraft，名称借鉴自“Minecraft”。也是希望 Admincraft 能够像�
 
 Admincraft 在 Vue 已有 API 的基础上进行了更高级的 API 封装。令 Admincraft 支持除传统的单一工程开发外也支持模块化分离开发，开发完成的模块可以分布部署，并在另一个模块运行时热加载到主系统中。
 
+## 内置工具库
+
+Admincraft 内置了下列工具库，无需再次安装。
+
+- [vue](https://cn.vuejs.org)
+
+- [vue-meta](https://vue-meta.nuxtjs.org/)
+
+- [vue-router](https://router.vuejs.org/zh/)
+
+- [vuex](https://vuex.vuejs.org/zh/)
+
+- [axios](https://github.com/axios/axios)
+
+- [better-scroll](https://github.com/ustbhuangyi/better-scroll)
+
 ## 视图层次
 
 为了使应用的页面布局灵活多变，不局限为单一的控制台布局，Admincraft 自带的用户界面采用了`布局 > 页面 > 组件`的层级结构。如下图：

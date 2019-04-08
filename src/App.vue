@@ -28,8 +28,11 @@ export default {
     // 监听懒加载的路由对象，选择布局，不可用computed方法，因为懒加载是异步的。
     $route: {
       handler(n) {
+        const defaultLayout = this.$store.state.app.options.ui ? 'default' : ''
         this.layout =
-          n.meta.layout || (n.matched[0] && n.matched[0].meta.layout)
+          n.meta.layout ||
+          (n.matched[0] && n.matched[0].meta.layout) ||
+          defaultLayout
       },
       deep: true,
       immediate: true

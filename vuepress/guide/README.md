@@ -77,7 +77,6 @@ let admincraft = new Admincraft({
     image: '',
     text: ''
   },
-  modules: [],
   http: {}
 })
 admincraft.vue.$mount(el)
@@ -151,7 +150,7 @@ import storeModule from './store'
 app.$addStore('moduleName', storeModule)
 ```
 
-### 首页配置
+### 首页配置 (需UI支持)
 
 为了使控制台首页地址可以显示任何页面，Admincraft 使用 render 函数令首页变得可配置。
 
@@ -190,6 +189,7 @@ public --------------- 不需要webpack打包的静态资源目录
 src ------------------ 源代码目录
   assets ------------- 需要webpack打包编译的资源目录
   components --------- 局部组件目录
+  layout ------------- 布局组件目录
   router ------------- 路由配置目录
     routes.js -------- 路由配置
   store -------------- vuex状态管理配置
@@ -273,16 +273,17 @@ export default admincraft =>
 
 从上文可知，代码打包成一个 Admincraft 模块可以用一个导出函数的入口文件`init.js`来实现。那作为一个 Admincraft 模块，我们如何去运行开发呢？
 
-其实很简单，像传统的 Vue 工程一样，我们从`main.js`文件出发。我们只需要在我们的 `main.js` 文件中导入模块要导出的初始化函数（`init.js` ）和 `Admincraft`，我们当前开发服务所运行的代码就是一个 Admincraft 项目，我们当然就可以使用 Admincraft 创建实例，并在[实例化的同时传入我们的当前模块](/guide/#实例化选项)。
+其实很简单，像传统的 Vue 工程一样，我们从`main.js`文件出发。我们只需要在我们的 `main.js` 文件中导入模块要导出的初始化函数（`init.js` ）和 `Admincraft`，我们当前开发服务所运行的代码就是一个 Admincraft 项目，我们当然就可以使用 Admincraft 创建实例，并在[实例化前添加我们的模块](/api/#admincraft-add)。
 
 ```javascript
 // main.js
 import Admincraft from 'admincraft'
 import showCase from './init'
+// 添加一个模块
+Admincraft.add(showCase)
 // 创建实例
 let appElement = document.createElement('div')
 let app = new Admincraft({
-  modules: [showCase],
   title: 'Showcase',
   logo: { text: 'showcase演示' }
 })
@@ -298,9 +299,9 @@ document.body.appendChild(app.$el)
 
 在 Admincraft 项目中我们有两种方式加载模块。
 
-### 实例化时加载
+### 实例化前加载
 
-Admincraft 实例化时可以通过实例配置[modules](/options/#modules)传入模块初始化函数数组。
+Admincraft 实例化前可以通过[Admincraft.add](/api/#admincraft-add)方法添加一个模块。
 
 ### 运行时加载
 

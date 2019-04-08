@@ -9,7 +9,6 @@ import layoutDefault from './layout/Default.vue'
 const defaultOptions = {
   title: '',
   logo: {},
-  modules: [],
   http: {},
   router: {}
 }
@@ -24,18 +23,13 @@ class Admincraft extends Vue {
     Vue.use(Meta)
     Vue.use(moreDirective, { store })
     Vue.use(moreMethods, { router, store, instanceOptions })
-    for(const value of admincraftModuleSet) {
-      Vue.use(value)
-    }
     super({
       router,
       store,
       render: h => h(App)
     })
-    if (instanceOptions.modules.length > 0) {
-      instanceOptions.modules.forEach(module => {
-        module(this)
-      })
+    for(const value of admincraftModuleSet) {
+      value(this, Vue)
     }
   }
   static add(module) {

@@ -2,6 +2,28 @@
 
 ## 全局 API
 
+### Admincraft.add
+
+- #### 参数:
+
+  - {Function} [admincraftModule](/guide/#编写一个模块)
+
+- #### 用法:
+
+  用于提前安装 Admincraft 模块。
+
+  除了模块的`动态加载`，我们实例化应用前也可以预先装载已有的模块数据，这在使得我们在开发 Admincraft 模块的时候可以同步载入模块数据，方便开发。
+
+  模块初始化函数会接收两个参数：
+
+  - 实例对象
+
+    可以调用 Admincraft 实例API
+
+  - Vue构造函数
+
+    可以调用 Vue 全局API
+
 ### Admincraft.use
 
 - #### 参数:

@@ -20,7 +20,7 @@ module.exports = {
         link: '/api/'
       },
       {
-        text: '内置UI',
+        text: 'UI',
         link: '/ui/'
       },
       {

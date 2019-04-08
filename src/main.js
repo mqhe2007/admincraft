@@ -5,6 +5,7 @@ import moreDirective from './directive'
 import moreMethods from './methods'
 import Router from './router'
 import Store from './store'
+import layoutDefault from './layout/Default.vue'
 const defaultOptions = {
   title: '',
   logo: {},
@@ -18,6 +19,7 @@ class Admincraft extends Vue {
     const router = Router(Vue, instanceOptions)
     const store = Store(Vue)
     store.commit('app/setOptions', instanceOptions)
+    Vue.component('layoutDefault', layoutDefault)
     Vue.use(Meta)
     Vue.use(moreDirective, { store })
     Vue.use(moreMethods, { router, store, instanceOptions })

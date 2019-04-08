@@ -32,7 +32,11 @@ Admincraft 内置了下列工具库，无需再次安装。
 
 ### 布局
 
-布局是系统最顶层的[路由出口](https://router.vuejs.org/zh/guide/essentials/nested-routes.html)。Admincraft 预设了若干种布局，例如：控制台，空页面，错误提醒等。通过切换不同布局可以实现不同的顶级页面结构需要。
+布局是系统最顶层的[路由出口](https://router.vuejs.org/zh/guide/essentials/nested-routes.html)。通过配置 Admincraft 布局，可以实现：控制台，空页面，错误等页面。
+
+在[路由选项](/options/#路由选项配置)中未配置`layout`选项时，Admincraft 默认布局名称为`layoutDefault`，会输出“布局未找到提示”，并且子路由页面不会被输出。
+
+可以使用 [添加布局](/api/#app-addlayout) API设置同名布局进行重设。
 
 ### 页面
 

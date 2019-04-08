@@ -4,7 +4,7 @@ import menus from './menus'
 
 export default app => {
   // 注册布局
-  app.$addLayout({'LayoutDemo':LayoutDemo}, () => {})
+  app.$addLayout({'layoutDefault':LayoutDemo}, () => {})
   // 注册路由
   app.$addRoutes(routes, () => {})
   // 注册菜单

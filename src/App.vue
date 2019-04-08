@@ -3,10 +3,6 @@
        v-cloak>
     <component v-if="layout"
                :is="layout"></component>
-    <h2 class="ac-nolayout-tip"
-        v-else>未找到有效的布局，无法显示页面。<br>更多信息请参考：<a href="https://mqhe2007.github.io/admincraft/api/#app-addlayout"
-         target="_blank">添加布局</a></h2>
-
   </div>
 </template>
 
@@ -21,18 +17,17 @@ export default {
   },
   data() {
     return {
-      layout: ''
+      layout: 'layoutDefault'
     }
   },
   watch: {
     // 监听懒加载的路由对象，选择布局，不可用computed方法，因为懒加载是异步的。
     $route: {
       handler(n) {
-        const defaultLayout = this.$store.state.app.options.ui ? 'default' : ''
         this.layout =
           n.meta.layout ||
           (n.matched[0] && n.matched[0].meta.layout) ||
-          defaultLayout
+          'layoutDefault'
       },
       deep: true,
       immediate: true
@@ -60,9 +55,5 @@ body
   width 100vw
   height 100vh
   overflow hidden
-
-.ac-nolayout-tip
-  margin-top 20%
-  text-align center
 </style>
 

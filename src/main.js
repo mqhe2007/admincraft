@@ -13,6 +13,7 @@ const defaultOptions = {
   http: {},
   router: {}
 }
+let admincraftModuleSet = new Set()
 class Admincraft extends Vue {
   constructor(options) {
     const instanceOptions = { ...defaultOptions, ...options }
@@ -23,7 +24,9 @@ class Admincraft extends Vue {
     Vue.use(Meta)
     Vue.use(moreDirective, { store })
     Vue.use(moreMethods, { router, store, instanceOptions })
-    if (instanceOptions.ui) Vue.use(instanceOptions.ui)
+    for(const value of admincraftModuleSet) {
+      Vue.use(value)
+    }
     super({
       router,
       store,
@@ -34,6 +37,9 @@ class Admincraft extends Vue {
         module(this)
       })
     }
+  }
+  static add(module) {
+    admincraftModuleSet.add(module)
   }
 }
 

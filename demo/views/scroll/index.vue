@@ -5,5 +5,5 @@
 </template>
 <style lang="stylus">
 .page-1
-  height 1000px
+  height: 1000px
 </style>

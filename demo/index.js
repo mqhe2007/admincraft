@@ -1,11 +1,9 @@
-import Admincraft from '../src/'
+import Admincraft from '../src/main.js'
 import init from './init'
 let el = document.createElement('div')
 document.body.appendChild(el)
-
 let admincraft = new Admincraft({
-  hasUI: true,
-  title: 'admincraft',
+  title: 'Admincraft Demo',
   logo: {
     image: '',
     text: ''

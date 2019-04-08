@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import App from './App'
 import Meta from 'vue-meta'
-import moreDirective from './core/directive'
-import moreMethods from './core/methods/'
-import Router from './core/router/'
-import Store from './core/store/'
-import uiInit from './ui/'
+import moreDirective from './directive'
+import moreMethods from './methods'
+import Router from './router'
+import Store from './store'
 const defaultOptions = {
   title: '',
   logo: {},
   modules: [],
-  hasUI: true,
   http: {},
   router: {}
 }
@@ -23,6 +21,7 @@ class Admincraft extends Vue {
     Vue.use(Meta)
     Vue.use(moreDirective, { store })
     Vue.use(moreMethods, { router, store, instanceOptions })
+    if (instanceOptions.ui) Vue.use(instanceOptions.ui)
     super({
       router,
       store,
@@ -32,9 +31,6 @@ class Admincraft extends Vue {
       instanceOptions.modules.forEach(module => {
         module(this)
       })
-    }
-    if (instanceOptions.hasUI) {
-      uiInit(this)
     }
   }
 }

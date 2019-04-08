@@ -5,7 +5,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry:
     process.env.NODE_ENV === 'production'
-      ? './src/index.js'
+      ? './src/main.js'
       : './demo/index.js',
   output: {
     filename: 'main.js',
@@ -48,7 +48,13 @@ module.exports = {
             options: { importLoaders: 2 }
           },
           'postcss-loader',
-          'stylus-loader'
+          'stylus-loader',
+          {
+            loader: 'style-resources-loader',
+            options: {
+              patterns: path.resolve(__dirname, './src/ui/style/variables.styl')
+            }
+          }
         ]
       },
       {

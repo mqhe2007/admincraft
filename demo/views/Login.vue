@@ -56,51 +56,51 @@ export default {
 
 <style lang="stylus">
 .login
-  display flex
-  flex-flow column
-  justify-content center
-  align-items center
-  width 100%
-  height 100%
+  display: flex
+  flex-flow: column
+  justify-content: center
+  align-items: center
+  width: 100%
+  height: 100%
 
   .logo
-    flex 0 0 30px
-    font-size 30px
-    margin-bottom 15px
+    flex: 0 0 30px
+    font-size: 30px
+    margin-bottom: 15px
 
   .form
-    display flex
-    flex-flow column
-    justify-content center
-    align-items center
-    width 250px
-    padding 20px 10px 10px
-    background #f5f5f5
+    display: flex
+    flex-flow: column
+    justify-content: center
+    align-items: center
+    width: 250px
+    padding: 20px 10px 10px
+    background: #f5f5f5
 
     *
-      margin-bottom 15px
+      margin-bottom: 15px
 
     input, button
-      height 30px
-      border-radius 4px
-      width 100%
-      border none
-      padding 0 10px
-      outline none
-      transition all 0.3s
+      height: 30px
+      border-radius: 4px
+      width: 100%
+      border: none
+      padding: 0 10px
+      outline: none
+      transition: all 0.3s
 
     input
-      background #fff
+      background: #fff
 
       &:focus
-        box-shadow 0 10px 25px -5px rgba(0, 0, 0, 0.5)
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5)
 
     button
-      background #999
-      color #fff
-      cursor pointer
-      user-select none
+      background: #999
+      color: #fff
+      cursor: pointer
+      user-select: none
 
       &:hover
-        box-shadow 0 10px 25px -5px rgba(0, 0, 0, 0.5)
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5)
 </style>

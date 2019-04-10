@@ -1,10 +1,10 @@
 # Admincraft
 
-Admincraft是一个支持模块化分布部署和加载的vue admin。
+Admincraft是一个支持模块化分布部署和加载的vue admin。（[微前端？](https://www.thoughtworks.com/radar/techniques/micro-frontends)）
 
-Admincraft is a vue admin that supports modular distribution deployment and loading.
+Admincraft is a vue admin that supports modular distribution deployment and loading. ([Micro frontends?](https://www.thoughtworks.com/radar/techniques/micro-frontends))
 
-Admincraft 名称借鉴自“Minecraft”。也是希望 Admincraft 能够像“Minecraft”一样成为一个灵活自由强大的工具，为中后台应用的快速开发寻找一个新的方式。
+Admincraft 名称借鉴自“Minecraft”。也是希望 Admincraft 能够像“Minecraft”一样成为一个灵活强大的自由组合工具，为中后台应用的快速开发寻找一个新的方式。
 
 ## 安装
 

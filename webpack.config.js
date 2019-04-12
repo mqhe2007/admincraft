@@ -4,15 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 module.exports = {
   entry:
-    process.env.NODE_ENV === 'production'
-      ? './src/main.js'
-      : './demo/index.js',
+    process.env.NODE_ENV === 'production' ? './src/main.js' : './dev/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: process.env.NODE_ENV === 'production' ? './' : '',
     library: 'Admincraft',
-    // libraryExport: 'default',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
@@ -38,6 +35,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        use: ['vue-style-loader', 'css-loader']
       },
       {
         test: /\.styl(us)?$/,
@@ -77,7 +78,8 @@ module.exports = {
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
-      title: '加载中……'
+      title: '加载中……',
+      template: 'dev/index.html'
     })
   ]
 }

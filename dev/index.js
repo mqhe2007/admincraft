@@ -1,5 +1,8 @@
 import Admincraft from '../src/main.js'
-import init from './init'
+import admincraftUI from 'admincraft-ui'
+import admincraftShowcase from 'admincraft-showcase'
+Admincraft.add(admincraftUI)
+Admincraft.add(admincraftShowcase)
 let el = document.createElement('div')
 document.body.appendChild(el)
 let admincraft = new Admincraft({
@@ -8,7 +11,6 @@ let admincraft = new Admincraft({
     image: '',
     text: ''
   },
-  modules: [init],
   http: {
     factorOfSuccess: {
       key: 'ok',

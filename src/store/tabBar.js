@@ -11,9 +11,11 @@ export default {
     },
     // 加入路由导航
     addTab(state, route) {
-      let has = state.tabs.find(item => item.path === route.path)
-      if (!has) {
-        state.tabs.push(route)
+      if (route) {
+        let has = state.tabs.find(item => item.path === route.path)
+        if (!has) {
+          state.tabs.push(route)
+        }
       }
     },
     // 删除路由导航

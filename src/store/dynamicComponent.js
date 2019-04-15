@@ -9,7 +9,9 @@ export default {
     add(state, { position, component }) {
       if (position && component) {
         let componentName = component.name
-        if (!state[position]) throw new Error(position + '插槽位置不存在')
+        if (!state[position]) {
+          Vue.set(state, position, {})
+        }
         if (!state[position][componentName]) {
           Vue.set(state[position], componentName, component)
         }

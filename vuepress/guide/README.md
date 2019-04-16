@@ -82,7 +82,7 @@ let admincraft = new Admincraft({
 admincraft.vue.$mount(el)
 ```
 
-刷新浏览器，此时应该可以看到 admincraft 的控制台界面了。
+刷新浏览器，此时应该可以看到 admincraft 的默认界面了。
 
 ### 路由配置
 
@@ -150,19 +150,21 @@ import storeModule from './store'
 app.$addStore('moduleName', storeModule)
 ```
 
-### 首页配置 (需UI支持)
-
-为了使控制台首页地址可以显示任何页面，Admincraft 使用 render 函数令首页变得可配置。
-
-改变一个路由非常容易，我们通过提交一个实例方法来实现修改首页：
-
-```javascript
-this.$modifyHomepage('routeName')
-```
-
 ### 使用 Vue 插件
 
 查看全局 API：[Admincraft.use](/api/#admincraft-use)
+
+## 加载一个模块
+
+在 Admincraft 项目中我们有两种方式加载模块。
+
+### 实例化前加载
+
+Admincraft 实例化前可以通过[Admincraft.add](/api/#admincraft-add)方法添加一个模块。
+
+### 运行时加载
+
+应用运行时在任何时候可以通过实例方法[\$moduleLoader](/api/#app-moduleloader)进行加载。
 
 ## 编写一个模块
 
@@ -295,18 +297,6 @@ document.body.appendChild(app.$el)
 
 这样在开发阶段既能同步使用 Admincraft 提供的 API，组件，布局等能力，又能保证开发出的模块能完美被其他 Admincraft 项目加载。
 
-## 加载一个模块
-
-在 Admincraft 项目中我们有两种方式加载模块。
-
-### 实例化前加载
-
-Admincraft 实例化前可以通过[Admincraft.add](/api/#admincraft-add)方法添加一个模块。
-
-### 运行时加载
-
-应用运行时在任何时候可以通过实例方法[\$moduleLoader](/api/#app-moduleloader)进行加载。
-
 ## 事件总线
 
 为了提高模块与模块，模块与框架之间通信的灵活性，Admincraft 特别引入了事件总线。
@@ -345,7 +335,7 @@ this.$eventBus.off('EVENT_NAME')
 
 ## 发起异步请求
 
-根据业务接口发起异步请求获取数据，是前后端分离的系统最重要的功能之一。Admincraft 内部封装了强大易用的 http 网络请求库[axios](https://github.com/axios/axios)，并在实例化时赋化身为`$http`方法，我们使用`$http`发起请求就像使用 axios 一样，例如：
+根据业务接口发起异步请求获取数据，是前后端分离的系统最重要的功能之一。Admincraft 内部封装了强大易用的 http 网络请求库[axios](https://github.com/axios/axios)，并在实例化时赋化身为`$http`对象，我们使用`$http`发起请求就像使用 axios 一样，例如：
 
 ```js
 this.$http
@@ -357,9 +347,7 @@ this.$http
   })
 ```
 
-Admincraft 在内部通过 axios 拦截器处理了请求结果情况，方便统一处理，正常返回会直接返回服务器数据体，不必再解析 response 对象，异常的情况可以查询事件列表监听请求异常事件。
-
-除了前面讲到的，在 Admincraft 实例化时可以传入 http 配置，我们在使用实例方法`$http`时也可以随时修改请求配置，发起请求时传入的配置优先级大于实例化配置。
+除了在 Admincraft 实例化时可以传入 http 配置，我们在使用实例方法`$http`时也可以随时修改请求配置，发起请求时传入的配置优先级大于实例化配置。
 
 ```js
 this.$http

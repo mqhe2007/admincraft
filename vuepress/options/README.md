@@ -20,7 +20,7 @@
 
 ## 实例化选项
 
-### title 
+### title
 
 - 类型 `{String}`
 
@@ -36,8 +36,7 @@
 
   - 类型 `{String}`
 
-
-logo位于控制台框架左上角头部区域，可以自定义图片和文字内容，图片和文字也可单独配置，如果图片和文字都不配置，标识则会直接显示`title`
+logo 位于控制台框架左上角头部区域，可以自定义图片和文字内容，图片和文字也可单独配置，如果图片和文字都不配置，标识则会直接显示`title`
 
 ### router
 
@@ -67,38 +66,44 @@ Admincraft 内部封装了强大易用的 http 网络请求库[axios](https://gi
 let admincraft = new Admincraft({
   ...
   http: {
-    factorOfSuccess: {
-      key: 'ok',
-      value: true
-    },
-    baseURL: 'https://some-domain.com/api/',
-    timeout: 1000,
-    ...
+    config: {
+      baseURL: 'https://some-domain.com/api/',
+      timeout: 1000,
+      ...
+    }
+    interceptor: {
+      response: {
+        success: (res) => {}
+        error: (err) => {}
+      }
+    }
   }
 })
 ```
 
-- factorOfSuccess
-  
-  - key
+- config
 
-    - 类型 `String`
+  选项列表可以参考[axios 官方文档](https://github.com/axios/axios)。
 
-    - 必选
+- interceptor
 
-    后端返回数据时用来表示请求结果状态的属性名。
+  可选配置的拦截器方法。
 
-  - value
+  - interceptor.request.success
 
-    - 类型 `String || Number || Boolean`
+    请求`成功`拦截器方法。
+    
+  - interceptor.request.error
 
-    - 必选
+    请求`失败`拦截器方法。
 
-    后端返回数据时用来表示请求成功时的`key`的值。
+  - interceptor.response.success
 
-  其他选项可以参考[axios 官方文档]()。
+    响应`成功`拦截器方法。
+    
+  - interceptor.response.error
 
-> 更多实例化配置敬请期待。
+    响应`失败`拦截器方法。
 
 ## 路由选项配置
 

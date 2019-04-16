@@ -1,10 +1,22 @@
-# 内置UI
+# 可选 UI 模块
 
 :::warning
 
-UI组件正在开发中，请勿使用。
+可选 UI 模块现已抽离，可以单独安装[admincraft-ui](https://github.com/mqhe2007/admincraft-ui)包使用。
+
+组件尚不健全，仅供测试。
 
 :::
+
+## 首页配置
+
+Admincraft-ui 使用 render 函数令首页变得可配置，首页路由地址可以显示任何页面。
+
+改变一个路由非常容易，我们通过提交一个实例方法来实现修改首页：
+
+```javascript
+this.$modifyHomepage('routeName')
+```
 
 ## 事件列表
 

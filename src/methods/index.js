@@ -14,12 +14,12 @@ export default (Vue, { router, store, instanceOptions }) => {
   Vue.prototype.$addRoutes = addRoutes(router, store)
   Vue.prototype.$addStore = addStore(store)
   Vue.prototype.$addMenus = addMenus(store)
+  Vue.prototype.$eventBus = eventBus
   Vue.prototype.$http = http(instanceOptions.http, Vue.prototype.$eventBus)
   Vue.prototype.$modifyHome = modifyHome(store)
   Vue.prototype.$dynamicComponent = new DynamicComponent(store)
   Vue.prototype.$addRemoteLib = addRemoteLib
   Vue.prototype.$Scroll = BScroll
-  Vue.prototype.$eventBus = eventBus
   Vue.prototype.$moduleLoader = moduleLoader
   Vue.prototype.$addLayout = addLayout(Vue)
 }

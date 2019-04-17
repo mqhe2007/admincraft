@@ -22,9 +22,11 @@ let admincraft = new Admincraft({
   },
   router: {
     config: {},
-    guards: {
-      beforeResolve: (to, from, next) => {
-        next()
+    guards: () => {
+      return {
+        beforeResolve: (to, from, next) => {
+          next()
+        }
       }
     }
   }

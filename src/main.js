@@ -15,20 +15,20 @@ const defaultOptions = {
 let admincraftModuleSet = new Set()
 class Admincraft extends Vue {
   constructor(options) {
-    const instanceOptions = { ...defaultOptions, ...options }
-    const router = Router(Vue, instanceOptions)
-    const store = Store(Vue)
-    store.commit('app/setOptions', instanceOptions)
+    const context = { config: { ...defaultOptions, ...options } }
+    context.router = Router(Vue, context)
+    context.store = Store(Vue)
+    context.store.commit('app/setOptions', context.config)
     Vue.component('layoutDefault', layoutDefault)
     Vue.use(Meta)
-    Vue.use(moreDirective, { store })
-    Vue.use(moreMethods, { router, store, instanceOptions })
+    Vue.use(moreDirective, context)
+    Vue.use(moreMethods, context)
     super({
-      router,
-      store,
+      router: context.router,
+      store: context.store,
       render: h => h(App)
     })
-    for(const value of admincraftModuleSet) {
+    for (const value of admincraftModuleSet) {
       value(this, Vue)
     }
   }

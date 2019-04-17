@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 export default http => {
-  let instance = axios.create(http.config)
-  if (http.interceptor) {
+  let instance = axios.create(http && http.config)
+  if (http && http.interceptor) {
     instance.interceptors.request.use(
       http.interceptor.request && http.interceptor.request.success,
       http.interceptor.request && http.interceptor.request.error

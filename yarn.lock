@@ -1659,55 +1659,29 @@ acorn@^6.0.5:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
   integrity sha512-jPTiwtOxaHNaAPg/dmrJ/beuzLRnXtB0kQPQ8JpotKJgTB6rX6c8mlf315941pyjBSaPg8NHXS9fhP4u17DpGA==
 
-admincraft-showcase@^0.1.6:
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/admincraft-showcase/-/admincraft-showcase-0.1.6.tgz#e6001cd724dc196b6d94a2d2f7ddc1a0ba8f49d7"
-  integrity sha512-8OnAxP+hAEJEaUv7J+oIaFKNjy82k5K2ghj/6pN70y2/he31PeJp631xbhfXWNefK3IgjNwjdW4ZAPD27GR3/A==
+admincraft-showcase@^0.1.9:
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/admincraft-showcase/-/admincraft-showcase-0.1.9.tgz#d00ac2120859ffb08d5671f50f48b9ceba7c2ce5"
+  integrity sha512-/l8HIPOQYdDcQZ59uqwrY8LSG8Prm9J33T8nzoJHEehPGdLLMscU2ODLcfRXzgtNaZNceWpHe98kHGImC/Fpyg==
   dependencies:
-    admincraft "^0.5.4-alpha"
-    admincraft-ui "^0.1.5-alpha"
     jquery "^3.3.1"
     prismjs "^1.16.0"
 
-admincraft-ui@^0.1.5-alpha:
-  version "0.1.5-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.5-alpha.tgz#cf0e6edd37f4964869f6f30726c7f193e458bc5d"
-  integrity sha512-0nCPCCR2GKQHJWXcN/4K6uWVZWY9B91llnuvxNqy8QP9I2WINNl3Wmq8EGiugMoHVyclYPKZpGB33iqmoEBajQ==
+admincraft-ui@^0.1.13-alpha:
+  version "0.1.13-alpha"
+  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.13-alpha.tgz#1c28b56470111122df088886e310917408382a60"
+  integrity sha512-xzsI3mctTcqu2COVU1cc2LjcmnK+EYk3JdJcTF7f8UwZcDdId+GMyGZYEVeVrZK3sdaaKEkWVKv1agDEC0RO6A==
   dependencies:
     "@babel/polyfill" "^7.4.3"
     "@fortawesome/fontawesome-free-solid" "^5.0.13"
     "@fortawesome/fontawesome-svg-core" "^1.2.17"
     "@fortawesome/vue-fontawesome" "^0.1.6"
-    admincraft "^0.5.3-alpha"
+    admincraft "^0.5.6-alpha"
 
-admincraft-ui@^0.1.7-alpha:
-  version "0.1.7-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.7-alpha.tgz#932b0cff4c92ef1f721ec367685955de6cd50b40"
-  integrity sha512-isIs22JgziN/tRHGrDv7qCZEZZEFLXg9noLrl5bQ60PyThEijUecLu+SP0CjA61KzAyi8TADUYQBin7/BLsJoA==
-  dependencies:
-    "@babel/polyfill" "^7.4.3"
-    "@fortawesome/fontawesome-free-solid" "^5.0.13"
-    "@fortawesome/fontawesome-svg-core" "^1.2.17"
-    "@fortawesome/vue-fontawesome" "^0.1.6"
-    admincraft "^0.5.3-alpha"
-
-admincraft@^0.5.3-alpha:
-  version "0.5.3-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft/-/admincraft-0.5.3-alpha.tgz#b7eb62f9c3b6d4ae23554c5ebf63718f831445c4"
-  integrity sha512-lBDuKvxklVOwUD7y9f+a/C8VFSLZuvNVXRh4B2uucJKF1MrQs7/WahyT82gwAB6F8n4e8MFhJLjG1jTRh87RHQ==
-  dependencies:
-    "@babel/polyfill" "^7.4.3"
-    axios "^0.18.0"
-    better-scroll "^1.15.0"
-    vue "^2.6.9"
-    vue-meta "^1.5.8"
-    vue-router "^3.0.2"
-    vuex "^3.1.0"
-
-admincraft@^0.5.4-alpha:
-  version "0.5.4-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft/-/admincraft-0.5.4-alpha.tgz#8d2bc827ecf26c4ca7da70ea26ac871cde9072ba"
-  integrity sha512-OxQWl8+MtXbLgJ5eVl5NUbhSXaKM/TlKMOzRw9b6CiSlbRhn7kLgoyv0/ohQzE7hEbn3Hi2x6qRN1ELQzb8PPw==
+admincraft@^0.5.6-alpha:
+  version "0.5.6-alpha"
+  resolved "https://registry.yarnpkg.com/admincraft/-/admincraft-0.5.6-alpha.tgz#21c089cf9f6c0faa3ddf56a171aa3b9d178a3e83"
+  integrity sha512-GOpbZBa0gkwP6sXESprUqZFQ/5yPLKacq27bzSNvld+fhPYlcToPsZo2eYUly3YnceNond7UMqMvUFEknYfbyQ==
   dependencies:
     "@babel/polyfill" "^7.4.3"
     axios "^0.18.0"

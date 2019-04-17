@@ -35,5 +35,8 @@ class Admincraft extends Vue {
   static add(module) {
     admincraftModuleSet.add(module)
   }
+  static use(plugin, options) {
+    Vue.use(plugin, options)
+  }
 }
 export default Admincraft

@@ -40,13 +40,35 @@ logo 位于控制台框架左上角头部区域，可以自定义图片和文字
 
 ### router
 
-路由实例配置
+在 Admincraft 实例化时会同时实例化 vue-router，我们可以通过`router`选项去配置 vue-router。
 
-- beforeResolve
+```js
+let admincraft = new Admincraft({
+  ...
+  router: {
+    config: {
+      mode: 'hash'
+    }
+    guards: {
+      beforeResolve: (to, from, next) => {
+        next()
+      }
+    }
+  }
+})
+```
 
-  - 类型 `{Function}`
+- config
 
-  路由解析守卫，在所有组件内守卫和异步路由组件被解析之后，导航被确认之前调用。
+  - 类型 `{Object}`
+
+  选项列表可以参考[vue-router 官方文档](https://router.vuejs.org/zh/)。
+
+- guards
+
+  - 类型 `{Object}`
+
+  可选配置的路由全局导航守卫。
 
 ### http
 

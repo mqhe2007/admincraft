@@ -16,13 +16,14 @@ let admincraftModuleSet = new Set()
 class Admincraft extends Vue {
   constructor(options) {
     const context = { config: { ...defaultOptions, ...options } }
+    context.Vue = Vue
     context.router = Router(Vue, context)
     context.store = Store(Vue)
     context.store.commit('app/setOptions', context.config)
     Vue.component('layoutDefault', layoutDefault)
     Vue.use(Meta)
     Vue.use(moreDirective, context)
-    Vue.use(moreMethods, context)
+    moreMethods(context)
     super({
       router: context.router,
       store: context.store,

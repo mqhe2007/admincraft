@@ -1,4 +1,4 @@
-export default (router, store) => (routes, cb) => {
+export default ({ router, store }) => (routes, cb) => {
   let userPermissions = []
   if (store) userPermissions = store.state.user.permissions
   let permissionFilter = routes => {

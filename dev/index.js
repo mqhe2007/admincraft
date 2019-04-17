@@ -12,17 +12,19 @@ let admincraft = new Admincraft({
   },
   http: {
     config: {},
-    interceptor: {
-      response: {
-        success: response => {
-          return response.data
+    interceptor: context => {
+      return {
+        response: {
+          success: response => {
+            return response.data
+          }
         }
       }
     }
   },
   router: {
     config: {},
-    guards: () => {
+    guards: context => {
       return {
         beforeResolve: (to, from, next) => {
           next()

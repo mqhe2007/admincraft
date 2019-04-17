@@ -17,7 +17,7 @@ export default {
   },
   data() {
     return {
-      layout: 'layoutDefault'
+      layout: ''
     }
   },
   watch: {

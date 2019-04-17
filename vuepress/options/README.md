@@ -1,28 +1,30 @@
 # 配置
 
-## 基本信息
+## 项目信息
 
-工程（模块）的基本信息通过 npm 包配置文件`package.json`来配置，主要是以下字段。
+项目（模块）的基本信息通过 npm 包配置文件`package.json`来配置，跟模块相关的主要是以下两个属性：
 
-### name
+- name
 
-- 类型：`String`
+  - 类型：`{String}`
 
-模块的名称。
+  模块的名称，作为模块相关数据（初始化函数名，vuex 模块名，二级路由名称和路径等）的命名空间。
 
-模块名称遵从 npm 包命名规范，单词小写，多单词使用`-`连接。
+  模块名称遵从 npm 包命名规范。
 
-### version
+- version
 
-- 类型：`String`
+  - 类型：`{String}`
 
-模块的版本号，版本号命名应遵从[语义化版本规范](https://semver.org/lang/zh-CN/)。
+  模块的版本号，版本号命名应遵从[语义化版本规范](https://semver.org/lang/zh-CN/)。
 
-## 实例化选项
+## Admincraft 实例化选项
+
+实例化数据会被保存起来，运行时可随时调用。
 
 ### title
 
-- 类型 `{String}`
+- 类型 `{String} text`
 
 标题会反映在浏览器选项卡，页脚，logo（如果没有配置 logo 选项）。
 
@@ -34,9 +36,9 @@
 
 - text
 
-  - 类型 `{String}`
+  - 类型 `{String} text`
 
-logo 位于控制台框架左上角头部区域，可以自定义图片和文字内容，图片和文字也可单独配置，如果图片和文字都不配置，标识则会直接显示`title`
+logo 可以自定义图片和文字内容。
 
 ### router
 
@@ -49,9 +51,11 @@ let admincraft = new Admincraft({
     config: {
       mode: 'hash'
     }
-    guards: {
-      beforeResolve: (to, from, next) => {
-        next()
+    guards: (context) => {
+      return {
+        beforeResolve: (to, from, next) => {
+          next()
+        }
       }
     }
   }
@@ -62,13 +66,13 @@ let admincraft = new Admincraft({
 
   - 类型 `{Object}`
 
-  选项列表可以参考[vue-router 官方文档](https://router.vuejs.org/zh/)。
+  选项可以参考[vue-router 官方文档](https://router.vuejs.org/zh/)。
 
 - guards
 
-  - 类型 `{Object}`
+  - 类型 `{Function}`
 
-  可选配置的路由全局导航守卫。
+  函数接受上下文对象作为参数，并需要返回 vue-router 全局导航守卫对象。
 
 ### http
 
@@ -93,10 +97,12 @@ let admincraft = new Admincraft({
       timeout: 1000,
       ...
     }
-    interceptor: {
-      response: {
-        success: (res) => {}
-        error: (err) => {}
+    interceptor: (context) => {
+      return {
+        response: {
+          success: (res) => {}
+          error: (err) => {}
+        }
       }
     }
   }
@@ -105,27 +111,35 @@ let admincraft = new Admincraft({
 
 - config
 
+  - 类型 `{Object}`
+
   选项列表可以参考[axios 官方文档](https://github.com/axios/axios)。
 
 - interceptor
 
-  可选配置的拦截器方法。
+  - 类型 `{Function}`
 
-  - interceptor.request.success
+  可选配置的拦截器方法, 函数接受上下文对象作为参数，并需要返回如下拦截器配置对象：
 
-    请求`成功`拦截器方法。
-    
-  - interceptor.request.error
+  - request
 
-    请求`失败`拦截器方法。
+    - success
 
-  - interceptor.response.success
+      请求`成功`拦截器方法。
 
-    响应`成功`拦截器方法。
-    
-  - interceptor.response.error
+    - error
 
-    响应`失败`拦截器方法。
+      请求`失败`拦截器方法。
+
+  - response
+  
+    - success
+
+      响应`成功`拦截器方法。
+
+    - error
+
+      响应`失败`拦截器方法。
 
 ## 路由选项配置
 

@@ -48,7 +48,7 @@ Admincraft 内置了下列工具库，无需再次安装。
 
 ## Admincraft 实例
 
-每个应用或模块都是通过`Admincraft`类创建一个新的 Admincraft 实例开始的，Admincraft 实例本质上是一个增强了的 Vue 实例，具备 Vue 实例的所有属性和方法。
+每个应用或模块都是通过`Admincraft`类创建一个新的 Admincraft 实例开始的，Admincraft 实例本质上是一个增强了 API 的 Vue 实例，同时具备 Vue 实例的所有属性和方法（有待尝试）。
 
 ```javascript
 let admincraft = new Admincraft({
@@ -56,7 +56,7 @@ let admincraft = new Admincraft({
 })
 ```
 
-当创建一个 Admincraft 实例时，你可以传入一个选项对象作为实例化参数，详细选项请查看[实例化选项](/options/#实例化选项)。
+当创建一个 Admincraft 实例时，你可以传入一个选项对象作为实例化配置，详细选项请查看[实例化选项](/options/#实例化选项)。
 
 ### 挂载实例
 

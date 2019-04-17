@@ -17,13 +17,16 @@ export default {
   },
   data() {
     return {
-      layout: ''
+      layout: 'layoutDefault'
     }
   },
   watch: {
     // 监听懒加载的路由对象，选择布局，不可用computed方法，因为懒加载是异步的。
     $route: {
       handler(n) {
+        console.log(n)
+        // 当前路由未匹配到组件，布局为空
+        if (!n.matched.length) return this.layout = ''
         this.layout =
           n.meta.layout ||
           (n.matched[0] && n.matched[0].meta.layout) ||

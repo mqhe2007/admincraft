@@ -1,7 +1,7 @@
 import Router from 'vue-router'
 
-export default (Vue, context) => {
-  Vue.use(Router)
+export default (context) => {
+  context.Vue.use(Router)
   const routerOptions = context.config.router
   let _router = new Router(routerOptions && routerOptions.config)
   if (routerOptions && routerOptions.guards) {

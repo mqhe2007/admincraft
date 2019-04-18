@@ -36,7 +36,7 @@ Admincraft 内置了下列工具库，无需再次安装。
 
 在[路由选项](/options/#路由选项配置)中未配置`layout`选项时，Admincraft 默认布局名称为`layoutDefault`，会输出“布局未找到提示”，并且子路由页面不会被输出。
 
-可以使用 [添加布局](/api/#app-addlayout) API设置同名布局进行重设。
+可以使用 [添加布局](/api/#app-addlayout) API 设置同名布局进行重设。
 
 ### 页面
 
@@ -168,13 +168,17 @@ Admincraft 实例化前可以通过[Admincraft.add](/api/#admincraft-add)方法�
 
 ## 编写一个模块
 
+### 模块是什么
+
+文件导出一个接收 Admincraft 实例上下文对象的函数，并且在函数内部合并数据的都算是一个模块。我们通常使用`/src/module-init.js`文件作为模块 build 入口文件。
+
 借助于[Vue-cli](https://cli.vuejs.org/zh/)脚手架工具创建模块工程，我们很容易的把代码打包成一个 Admincraft 模块。
 
 一个 Admincraft 模块就是一个打包成 umd 规范的 js 库及相关资源。
 
 打包为库的配置请参考：[构建目标-库](https://cli.vuejs.org/zh/guide/build-targets.html)
 
-这里有一个带有完整演示的模块项目：[Admincraft-module](https://github.com/mqhe2007/admincraft-module)
+这里有一个带有完整演示的模块项目：[admincraft-showcase](https://github.com/mqhe2007/admincraft-showcase)
 
 ### 目录约定
 
@@ -216,66 +220,41 @@ yarn.lock ------------ npm依赖版本锁
 
 ### 模块打包
 
-Admincraft 的模块应该导出一个`init`函数。如果函数内部有异步操作，比如使用了`$addRemoteLib`API 来加载远程库，您可能需要让模块函数返回一个 Promise 来更好的控制异步流程。模块加载时此函数会被执行，接收的第一个参数是 `admincraft` 实例。使用 `admincraft` 实例方法，模块可以自行控制要加载的数据。
-
 下面是一个完整的模块打包入口例子：
 
 ```javascript
-// init.js
+// /src/module-init.js
 // 导入模块数据
 import routes from './router/routes'
 import storeModule from './store/storeModule'
-import libs from './config/libs'
 
 // 从package.json中获取模块名称
 let moduleName = require('../package.json').name
 
-// 动态获取模块js库的引用地址
-let i, moduleServerUrl
-if (
-  (i = window.document.currentScript) &&
-  (i = i.src.match(/(.+\/)[^/]+\.js$/))
-) {
-  moduleServerUrl = i[1]
-}
-
-// 导出模块init函数，当内部有异步操作时返回Promise
-export default admincraft =>
-  new Promise((resolve, reject) => {
-    // 注册路由
-    admincraft.$addRoutes(routes, () => {
-      console.log(moduleName + '：路由注册完成')
-    })
-
-    // 注册状态树
-    admincraft.$addStore(moduleName, storeModule, () => {
-      console.log(moduleName + '：状态注册完成')
-    })
-
-    // 注册菜单
-    admincraft.$addMenus(routes, () => {
-      console.log(moduleName + '：菜单注册完成')
-    })
-    let getRemoteLibUrlList = libs =>
-      libs.map(item => serverUrl + 'libs/' + item)
-    // 注册libs
-    admincraft
-      .$addRemoteLib(getRemoteLibUrlList(libs))
-      .then(() => {
-        console.log(`${moduleName}模块加载完成`)
-        resolve()
-      })
-      .catch(() => {
-        reject()
-      })
+// 导出模块初始化函数
+export default context => {
+  // 注册路由
+  context.vue.prototype.$addRoutes(routes, () => {
+    console.log(moduleName + '：路由注册完成')
   })
+
+  // 注册状态树
+  context.vue.prototype.$addStore(moduleName, storeModule, () => {
+    console.log(moduleName + '：状态注册完成')
+  })
+
+  // 注册菜单
+  context.vue.prototype.$addMenus(routes, () => {
+    console.log(moduleName + '：菜单注册完成')
+  })
+}
 ```
 
 ### 模块开发
 
-从上文可知，代码打包成一个 Admincraft 模块可以用一个导出函数的入口文件`init.js`来实现。那作为一个 Admincraft 模块，我们如何去运行开发呢？
+从上文可知，代码打包成一个 Admincraft 模块可以用一个导出函数的入口文件`module-init.js`来实现。那作为一个 Admincraft 模块，我们如何去运行开发呢？
 
-其实很简单，像传统的 Vue 工程一样，我们从`main.js`文件出发。我们只需要在我们的 `main.js` 文件中导入模块要导出的初始化函数（`init.js` ）和 `Admincraft`，我们当前开发服务所运行的代码就是一个 Admincraft 项目，我们当然就可以使用 Admincraft 创建实例，并在[实例化前添加我们的模块](/api/#admincraft-add)。
+其实很简单，像传统的 Vue 工程一样，我们从`main.js`文件出发。我们只需要在我们的 `main.js` 文件中导入模块要导出的初始化函数（`module-init.js` ）和 `Admincraft`，我们当前开发服务所运行的代码就是一个 Admincraft 项目，我们就可以使用 Admincraft 创建实例，并在[实例化前添加我们的模块](/api/#admincraft-add)。
 
 ```javascript
 // main.js

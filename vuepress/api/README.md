@@ -56,13 +56,13 @@ let app = new Admincraft({})
 import LayoutDemo from './LayoutDemo'
 this.$addLayout(
   {
-    'layoutName': LayoutDemo
+    layoutName: LayoutDemo
   },
   () => {}
 )
 ```
 
-在routes中使用自定义布局
+在 routes 中使用自定义布局
 
 ```javascript
 export default [
@@ -205,19 +205,28 @@ this.$modifyHome('routeName', () => {})
 
 - #### 参数:
 
-  - {Object} moduleUrlMap
+  - {Object | Function} moduleUrl | moduleInitFunction
 
 - #### 用法:
 
-  动态加载一个模块，参数需要传入一个模块地址的 map 对象，方法返回 Promise。
+  动态加载一个模块，参数支持两种方式：
 
-```javascript
-this.$moduleLoader({
-  'module-a': 'https://www.domain.com/modulea.umd.js'
-})
-  .then()
-  .catch()
-```
+  1. 一个登记模块地址对象，此时方法返回 Promise。
+
+  ```javascript
+  this.$moduleLoader({
+    'module-a': 'https://www.domain.com/modulea.umd.js'
+  })
+    .then()
+    .catch()
+  ```
+
+  2. 模块的初始化函数
+
+  ```javascript
+  moduleA = require('./module-a.js')
+  this.$moduleLoader(moduleA)
+  ```
 
 ## 实例 API / eventBus
 

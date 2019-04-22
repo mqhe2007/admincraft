@@ -77,9 +77,11 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new VueLoaderPlugin(),
-    new HtmlWebpackPlugin({
-      title: '加载中……',
-      template: 'dev/index.html'
-    })
+    () =>
+      process.env.NODE_ENV === 'development' &&
+      new HtmlWebpackPlugin({
+        title: '加载中……',
+        template: 'dev/index.html'
+      })
   ]
 }

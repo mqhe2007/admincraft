@@ -8,6 +8,10 @@ Admincraft，名称借鉴自“Minecraft”。也是希望 Admincraft 能够像�
 
 Admincraft 在 Vue 已有 API 的基础上进行了更高级的 API 封装。令 Admincraft 支持除传统的单一工程开发外也支持模块化分离开发，开发完成的模块可以分布部署，并在另一个模块运行时热加载到主系统中。
 
+:::tip
+Admincraft 做了很多的约定和预设，如果您只是想简单的拥有加载远程模块的能力，不妨只使用[vue-module-loader](https://github.com/mqhe2007/vue-module-loader)试试看。
+:::
+
 ## 内置工具库
 
 Admincraft 内置了下列工具库，无需再次安装。

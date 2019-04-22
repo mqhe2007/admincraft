@@ -1659,18 +1659,18 @@ acorn@^6.0.5:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.1.1.tgz#7d25ae05bb8ad1f9b699108e1094ecd7884adc1f"
   integrity sha512-jPTiwtOxaHNaAPg/dmrJ/beuzLRnXtB0kQPQ8JpotKJgTB6rX6c8mlf315941pyjBSaPg8NHXS9fhP4u17DpGA==
 
-admincraft-showcase@^0.1.9:
-  version "0.1.9"
-  resolved "https://registry.yarnpkg.com/admincraft-showcase/-/admincraft-showcase-0.1.9.tgz#d00ac2120859ffb08d5671f50f48b9ceba7c2ce5"
-  integrity sha512-/l8HIPOQYdDcQZ59uqwrY8LSG8Prm9J33T8nzoJHEehPGdLLMscU2ODLcfRXzgtNaZNceWpHe98kHGImC/Fpyg==
+admincraft-showcase@^0.1.10:
+  version "0.1.10"
+  resolved "https://registry.yarnpkg.com/admincraft-showcase/-/admincraft-showcase-0.1.10.tgz#312da8d10c3cc9ec05eb28f48d81147a72c3c15c"
+  integrity sha512-ojUGVgIz/WgGUtedxKf4vF79CcuW6QGaQtXTWjMI/oLNBocgnzhct7ScJiWcCuS1aFipQEm2jPKK/wGpvwZvNQ==
   dependencies:
     jquery "^3.3.1"
     prismjs "^1.16.0"
 
-admincraft-ui@^0.1.13-alpha:
-  version "0.1.13-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.13-alpha.tgz#1c28b56470111122df088886e310917408382a60"
-  integrity sha512-xzsI3mctTcqu2COVU1cc2LjcmnK+EYk3JdJcTF7f8UwZcDdId+GMyGZYEVeVrZK3sdaaKEkWVKv1agDEC0RO6A==
+admincraft-ui@^0.1.14-alpha:
+  version "0.1.14-alpha"
+  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.14-alpha.tgz#3c7ef9ed1c8f8d8939e8a54d0ccfbfa3a4e4db09"
+  integrity sha512-KCHk9RfRzJcoRG5fsaxhOOp0hGU9b0DQHl+3SeUUUMAlDjlaxY9xLIP7PQXHkDcBJiWyVMaJDarxI0p5NDXV6w==
   dependencies:
     "@babel/polyfill" "^7.4.3"
     "@fortawesome/fontawesome-free-solid" "^5.0.13"

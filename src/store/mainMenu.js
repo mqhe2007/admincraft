@@ -40,9 +40,7 @@ export default {
           let parents = item.parents.split('/')
           let target = findMenuByParent(parents, 0, state.menus)
           if (!target)
-            throw new Error(
-              '父级菜单' + item.parents + '未找到！菜单将被丢弃。'
-            )
+            console.warn('父级菜单' + item.parents + '未找到！菜单将被丢弃。')
           target.children.push(item)
         }
       })

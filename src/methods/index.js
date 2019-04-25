@@ -23,6 +23,6 @@ export default (context) => {
     )
   }
   context.Vue.prototype.$Scroll = BScroll
-  context.Vue.prototype.$moduleLoader = moduleLoader
+  context.Vue.prototype.$moduleLoader = moduleLoader(context)
   context.Vue.prototype.$addLayout = addLayout(context.Vue)
 }

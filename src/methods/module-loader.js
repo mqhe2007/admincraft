@@ -1,4 +1,4 @@
-export default function(moduleData) {
+export default context => moduleData => {
   if (typeof moduleData === 'object') {
     let promiseAll = []
     for (let moduleName in moduleData) {
@@ -8,7 +8,11 @@ export default function(moduleData) {
             let script = document.createElement('script')
             script.src = moduleData[moduleName]
             script.onload = () => {
-              window[moduleName](this)
+              if (window[moduleName]) {
+                window[moduleName](context)
+              } else {
+                console.warn(moduleName, '模块注册失败，请检查模块名称和地址是否匹配。')
+              }
               resolve()
             }
             script.onerror = () => {
@@ -21,7 +25,7 @@ export default function(moduleData) {
     }
     return Promise.all(promiseAll)
   } else if (typeof moduleData === 'function') {
-    moduleData(this)
+    moduleData(context)
   } else {
     console.error('参数错误')
   }

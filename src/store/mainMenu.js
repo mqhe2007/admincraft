@@ -78,6 +78,9 @@ export default {
         })
       }
       doIt(state.menus)
+    },
+    clear(state) {
+      state.menus = []
     }
   }
 }

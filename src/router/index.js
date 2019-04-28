@@ -1,9 +1,9 @@
-export default (Router, { Vue, config }) => {
-  Vue.use(Router)
-  const routerOptions = config.router
-  let router = new Router(routerOptions && routerOptions.config)
-  if (routerOptions && routerOptions.guards) {
-    const guards = routerOptions.guards(context)
+export default (Router, context) => {
+  context.Vue.use(Router)
+  const routerConfig = context.config.router
+  let router = new Router(routerConfig && routerConfig.config)
+  if (routerConfig && routerConfig.guards) {
+    const guards = routerConfig.guards(context)
     router.beforeEach(guards.beforeEach)
     router.beforeResolve(guards.beforeResolve)
     router.afterEach(guards.afterEach)

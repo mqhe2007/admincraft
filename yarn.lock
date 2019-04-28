@@ -1667,29 +1667,15 @@ admincraft-showcase@^0.1.10:
     jquery "^3.3.1"
     prismjs "^1.16.0"
 
-admincraft-ui@^0.1.14-alpha:
-  version "0.1.14-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.1.14-alpha.tgz#3c7ef9ed1c8f8d8939e8a54d0ccfbfa3a4e4db09"
-  integrity sha512-KCHk9RfRzJcoRG5fsaxhOOp0hGU9b0DQHl+3SeUUUMAlDjlaxY9xLIP7PQXHkDcBJiWyVMaJDarxI0p5NDXV6w==
+admincraft-ui@^0.2.0-alpha:
+  version "0.2.0-alpha"
+  resolved "https://registry.yarnpkg.com/admincraft-ui/-/admincraft-ui-0.2.0-alpha.tgz#75a19fd183217347347fbef2fba8f111f9fe4064"
+  integrity sha512-lyDc3eIlQs1N6VqMpU5ThfvhSukrSzbyHtYoCpyGG+8PDqOV8nJsnLnocS2VD6BT6ulZKrFKM1uA50Tdyw9okA==
   dependencies:
     "@babel/polyfill" "^7.4.3"
     "@fortawesome/fontawesome-free-solid" "^5.0.13"
     "@fortawesome/fontawesome-svg-core" "^1.2.17"
     "@fortawesome/vue-fontawesome" "^0.1.6"
-    admincraft "^0.5.6-alpha"
-
-admincraft@^0.5.6-alpha:
-  version "0.5.6-alpha"
-  resolved "https://registry.yarnpkg.com/admincraft/-/admincraft-0.5.6-alpha.tgz#21c089cf9f6c0faa3ddf56a171aa3b9d178a3e83"
-  integrity sha512-GOpbZBa0gkwP6sXESprUqZFQ/5yPLKacq27bzSNvld+fhPYlcToPsZo2eYUly3YnceNond7UMqMvUFEknYfbyQ==
-  dependencies:
-    "@babel/polyfill" "^7.4.3"
-    axios "^0.18.0"
-    better-scroll "^1.15.0"
-    vue "^2.6.9"
-    vue-meta "^1.5.8"
-    vue-router "^3.0.2"
-    vuex "^3.1.0"
 
 agentkeepalive@^2.2.0:
   version "2.2.0"
@@ -5384,11 +5370,6 @@ is-primitive@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-primitive/-/is-primitive-2.0.0.tgz#207bab91638499c07b2adf240a41a87210034575"
   integrity sha1-IHurkWOEmcB7Kt8kCkGochADRXU=
-
-is-promise@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/is-promise/-/is-promise-2.1.0.tgz#79a2a9ece7f096e80f36d2b2f3bc16c1ff4bf3fa"
-  integrity sha1-eaKp7OfwlugPNtKy87wWwf9L8/o=
 
 is-redirect@^1.0.0:
   version "1.0.0"
@@ -9144,17 +9125,6 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
-
-style-resources-loader@^1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/style-resources-loader/-/style-resources-loader-1.2.1.tgz#7679d5dc2f27046b2fc2b83c1d5b6c1b8a9b820c"
-  integrity sha512-ekId7AwZRW429UjQo02CJTt0Y8GwoT9zidvJLq4lRTJbu0cghv9XNRmt9mS4MR41+gZwMRT0EpFzP68HDWLbXQ==
-  dependencies:
-    glob "^7.1.2"
-    is-callable "^1.1.4"
-    is-plain-object "^2.0.4"
-    is-promise "^2.1.0"
-    loader-utils "^1.1.0"
 
 stylehacks@^4.0.0:
   version "4.0.3"

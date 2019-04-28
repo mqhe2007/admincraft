@@ -3,7 +3,7 @@ import BScroll from 'better-scroll'
 import addRoutes from './add-routes'
 import addStore from './add-store'
 import DynamicComponent from './dynamic-component'
-import http from './http/'
+import axios from './axios'
 import eventBus from './event-bus'
 import moduleLoader from './module-loader'
 import addLayout from './add-layout'
@@ -11,7 +11,7 @@ export default (context) => {
   context.Vue.prototype.$addRoutes = addRoutes(context.router)
   context.Vue.prototype.$addStore = addStore(context.store)
   context.Vue.prototype.$eventBus = eventBus
-  context.Vue.prototype.$http = http(context)
+  context.Vue.prototype.$http = axios(context)
   context.Vue.prototype.$dynamicComponent = new DynamicComponent(context.store)
   context.Vue.prototype.$addRemoteLib = () => {
     console.warn(

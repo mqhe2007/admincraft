@@ -10,8 +10,9 @@
          target="_blank">安装一个UI模块</a>以快速开始。</h2>
   </div>
 </template>
-<style lang="stylus">
-.ac-nolayout-tip
-  margin-top 20%
-  text-align center
+<style>
+.ac-nolayout-tip {
+  margin-top: 20%;
+  text-align: center
+}
 </style>

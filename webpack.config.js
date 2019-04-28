@@ -58,13 +58,7 @@ module.exports = {
             options: { importLoaders: 2 }
           },
           'postcss-loader',
-          'stylus-loader',
-          {
-            loader: 'style-resources-loader',
-            options: {
-              patterns: path.resolve(__dirname, './src/ui/style/variables.styl')
-            }
-          }
+          'stylus-loader'
         ]
       },
       {

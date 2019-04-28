@@ -26,7 +26,7 @@ export default {
       handler(n) {
         // console.log(n)
         // 当前路由未匹配到组件，布局为空
-        if (!n.matched.length) return this.layout = ''
+        if (!n.matched.length) return (this.layout = '')
         this.layout =
           n.meta.layout ||
           (n.matched[0] && n.matched[0].meta.layout) ||
@@ -41,22 +41,23 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-*
-  margin 0
-  padding 0
-  box-sizing border-box
-
-body
-  margin 0
-  overflow hidden
-
-[v-cloak]
-  display none
-
-.app
-  width 100vw
-  height 100vh
-  overflow hidden
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+[v-cloak] {
+  display: none;
+}
+.app {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
 </style>
 

@@ -1,19 +1,11 @@
 export default {
   namespaced: true,
   state: {
-    homeRouteName: '',
-    options: {
-      logo: {
-        
-      }
-    }
+    config: {}
   },
   mutations: {
-    setOptions(state, options) {
-      state.options = {...state.options, ...options}
-    },
-    setHomeRouteName(state, value) {
-      state.homeRouteName = value
-    },
+    setConfig(state, config) {
+      state.config = { ...state.config, ...config }
+    }
   }
 }

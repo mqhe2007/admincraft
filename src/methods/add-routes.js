@@ -1,11 +1,9 @@
-export default ({ router, store }) => (routes, cb) => {
-  let userPermissions = []
-  if (store) userPermissions = store.state.user.permissions
+export default router => (routes, permissionTags = [], cb) => {
   let permissionFilter = routes => {
     let newRoutes = []
     routes.forEach(route => {
       if (route.meta.permissionTag) {
-        if (userPermissions.find(item => item === route.meta.permissionTag)) {
+        if (permissionTags.find(item => item === route.meta.permissionTag)) {
           if (route.children && route.children.length > 0) {
             route.children = permissionFilter(route.children)
           }

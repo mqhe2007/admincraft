@@ -1,21 +1,17 @@
 // 方法
 import BScroll from 'better-scroll'
-import addRoutes from './addRoutes'
-import addStore from './addStore'
-import addMenus from './addMenus'
-import DynamicComponent from './DynamicComponent'
+import addRoutes from './add-routes'
+import addStore from './add-store'
+import DynamicComponent from './dynamic-component'
 import http from './http/'
-import modifyHome from './modifyHome'
-import eventBus from './eventBus'
+import eventBus from './event-bus'
 import moduleLoader from './module-loader'
-import addLayout from './addLayout'
+import addLayout from './add-layout'
 export default (context) => {
-  context.Vue.prototype.$addRoutes = addRoutes(context)
+  context.Vue.prototype.$addRoutes = addRoutes(context.router)
   context.Vue.prototype.$addStore = addStore(context.store)
-  context.Vue.prototype.$addMenus = addMenus(context.store)
   context.Vue.prototype.$eventBus = eventBus
   context.Vue.prototype.$http = http(context)
-  context.Vue.prototype.$modifyHome = modifyHome(context.store)
   context.Vue.prototype.$dynamicComponent = new DynamicComponent(context.store)
   context.Vue.prototype.$addRemoteLib = () => {
     console.warn(

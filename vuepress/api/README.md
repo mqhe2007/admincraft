@@ -111,22 +111,6 @@ this.$addRoutes(routes, () => {})
 this.$addStore('vuexModuleName', vuexModule, () => {})
 ```
 
-### app.$addMenus
-
-- #### 参数:
-
-  - {Array} routes | menus
-
-  - {Function} callback
-
-- #### 用法:
-
-  为侧边栏菜单添加菜单项，可以直接传入[路由配置数组](/options/#路由选项配置)，也可以传入[菜单配置数组](/options/#菜单配置)数组。
-
-```javascript
-this.$addMenus(someArray, () => {})
-```
-
 ### app.$dynamicComponent
 
 动态组件操作
@@ -169,36 +153,6 @@ this.$dynamicComponent.add('HEADER_RIGHT_MENUS', Component, () => {})
 
 ```javascript
 this.$dynamicComponent.remove('HEADER_RIGHT_MENUS', 'componentName', () => {})
-```
-
-### app.$addRemoteLib
-
-- #### 参数:
-
-  - {Array} libUrl
-
-- #### 用法:
-
-  添加远程库，因为远程资源加载是异步过程，所以方法返回一个 Promise。
-
-```javascript
-this.$addRemoteLib(libUrlArray).then()
-```
-
-### app.$modifyHome
-
-- #### 参数:
-
-  - {String} routeName
-
-  - {Function} callback
-
-- #### 用法:
-
-  改变首页。
-
-```javascript
-this.$modifyHome('routeName', () => {})
 ```
 
 ### app.$moduleLoader

@@ -83,7 +83,7 @@ let admincraft = new Admincraft({
   },
   http: {}
 })
-admincraft.vue.$mount(el)
+admincraft.$mount(el)
 ```
 
 刷新浏览器，此时应该可以看到 admincraft 的默认界面了。
@@ -116,18 +116,12 @@ export default [
 ]
 ```
 
-导入路由配置并在 Admincraft 实例化后使用 api 添加到实例中。
-
-```javascript
-// main.js
-import routes from './routes'
-app.$addRoutes(routes)
-```
-
 :::tip
 **这里有个特殊情况：**
-为了实现[动态可变的控制台首页](/guide/#首页配置)，`/`，也就是根路由，已经在 Admincraft 内部配置，任何情况下都不要再次配置。
+如果您使用了`admincraft-ui`模块，为了实现[动态可变的控制台首页](/ui/#首页配置)，`/`根路由，已经在`admincraft-ui`内部配置过了，请不要再次配置。
 :::
+
+路由配置可以在[模块初始化函数](/guide/#模块是什么)中使用原型方法`$addRoutes`进行加载，也可以在 Admincraft 实例化后使用实例方法`$addRoutes`加载。
 
 ### 状态配置
 
@@ -146,17 +140,11 @@ const storeModule = {
 export default storeModule
 ```
 
-导入 Vuex 模块配置并在 Admincraft 实例化后使用 api 添加到实例中。
-
-```javascript
-// main.js
-import storeModule from './store'
-app.$addStore('moduleName', storeModule)
-```
+加载方式和路由配置同理，请参考API。
 
 ### 使用 Vue 插件
 
-查看全局 API：[Admincraft.use](/api/#admincraft-use)
+在实例化之前使用全局 API：[Admincraft.use](/api/#admincraft-use)进行加载。
 
 ## 加载一个模块
 

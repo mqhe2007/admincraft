@@ -140,7 +140,7 @@ const storeModule = {
 export default storeModule
 ```
 
-加载方式和路由配置同理，请参考API。
+加载方式和路由配置同理，请参考 API。
 
 ### 使用 Vue 插件
 
@@ -163,6 +163,19 @@ Admincraft 实例化前可以通过[Admincraft.add](/api/#admincraft-add)方法�
 ### 模块是什么
 
 文件导出一个接收 Admincraft 实例上下文对象的函数，并且在函数内部合并数据的都算是一个模块。我们通常使用`/src/module-init.js`文件作为模块 build 入口文件。
+
+```js
+// /src/module-init.js
+import LayoutFrame from '@/layout/Frame'
+import routes from '@/router/routes.js'
+import storeModule from './store'
+export default ({ Vue }) => {
+  Vue.prototype.$addLayout({ layoutDefault: LayoutFrame })
+  Vue.prototype.$addRoutes(routes)
+  Vue.prototype.$addStore('moduleName', storeModule)
+  Vue.prototype.$addMenus(routes)
+}
+```
 
 借助于[Vue-cli](https://cli.vuejs.org/zh/)脚手架工具创建模块工程，我们很容易的把代码打包成一个 Admincraft 模块。
 
@@ -210,6 +223,16 @@ vue.config.js -------- vue-cli配置文件
 yarn.lock ------------ npm依赖版本锁
 ```
 
+### 依赖安装
+
+#### 公共依赖
+
+公共依赖是指大部分模块都要用到的依赖库，例如统一的 UI 组件库。这类公共依赖会在主框架模块中安装，业务模块开发时只需优先加载主框架模块，无需额外安装公共依赖。
+
+#### 私有依赖
+
+私有依赖是指只有业务模块自己要使用的依赖库。安装后导入为局部变量使用。
+
 ### 模块打包
 
 下面是一个完整的模块打包入口例子：
@@ -241,6 +264,60 @@ export default context => {
   })
 }
 ```
+
+### 模块部署
+
+一个使用 nginx+jenkins 的模块部署过程如下：
+
+#### 1. 新建模块虚拟机
+
+在部署服务器中找到 nginx 虚拟机配置目录`*/**/nginx/conf/vhost`。
+
+创建模块的`vhost`配置文件。
+
+着重以下配置：
+
+```shell
+server{
+  # 监听端口号。
+  listen 8081;
+  location / {
+    # 虚拟机根目录，以模块名命名，用以存放构建生成的文件。
+    root /home/apps/<module_name>;
+  }
+}
+
+```
+
+#### 2. 配置构建脚本
+
+登录 jenkins 构建工具创建新任务。
+
+##### 执行 shell 第一步
+
+本段 shell 主要是模块打包命令，打包过程根据自己模块`package.json`中实际的脚本进行配置。
+
+```shell
+node -v
+yarn -v
+yarn
+yarn build
+```
+
+##### 执行 shell 第二步
+
+把第一步打包完成的代码转移到部署服务器模块的虚拟机中。
+
+```shell
+ssh user@xxx.xxx.xxx.xxx "cd /home/apps
+rm -rf <module_name>
+mkdir <module_name>
+scp -r ${WORKSPACE}/dist/* user@xxx.xxx.xxx.xxx:/home/apps/<module_name>
+```
+
+#### 3. 验证模块地址
+
+等待 jenkins 任务执行完毕，尝试访问`http://xxx.xxx.xxx.xxx:8081/<module_name>.umd.js`，如果能访问成功，既模块部署成功。
 
 ### 模块开发
 

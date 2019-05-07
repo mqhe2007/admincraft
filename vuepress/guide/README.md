@@ -12,6 +12,10 @@ Admincraft 在 Vue 已有 API 的基础上进行了更高级的 API 封装。令
 Admincraft 做了很多的约定和预设，如果您只是想简单的拥有加载远程模块的能力，不妨只使用[vue-module-loader](https://github.com/mqhe2007/vue-module-loader)试试看。
 :::
 
+欢迎进群交流。
+
+![qq群](./img/group.png)
+
 ## 内置工具库
 
 Admincraft 内置了下列工具库，无需再次安装。
@@ -311,7 +315,7 @@ yarn build
 ```shell
 ssh user@xxx.xxx.xxx.xxx "cd /home/apps
 rm -rf <module_name>
-mkdir <module_name>
+mkdir <module_name>"
 scp -r ${WORKSPACE}/dist/* user@xxx.xxx.xxx.xxx:/home/apps/<module_name>
 ```
 

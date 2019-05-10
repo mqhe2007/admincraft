@@ -8,7 +8,7 @@ import eventBus from './event-bus'
 import moduleLoader from './module-loader'
 import addLayout from './add-layout'
 export default (context) => {
-  context.Vue.prototype.$addRoutes = addRoutes(context.router)
+  context.Vue.prototype.$addRoutes = addRoutes(context)
   context.Vue.prototype.$addStore = addStore(context.store)
   context.Vue.prototype.$eventBus = eventBus
   context.Vue.prototype.$http = axios(context)

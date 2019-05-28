@@ -7,7 +7,7 @@
     <meta name="description" content="一个支持模块化分布部署和加载的 Vue Admin">
     
     
-    <link rel="preload" href="/admincraft/assets/css/0.styles.8b4e8c53.css" as="style"><link rel="preload" href="/admincraft/assets/js/app.e6ccbcc6.js" as="script"><link rel="preload" href="/admincraft/assets/js/3.e7c32821.js" as="script"><link rel="prefetch" href="/admincraft/assets/js/10.5a8077f1.js"><link rel="prefetch" href="/admincraft/assets/js/2.28b4e99a.js"><link rel="prefetch" href="/admincraft/assets/js/4.b604e06f.js"><link rel="prefetch" href="/admincraft/assets/js/5.14ed9d0a.js"><link rel="prefetch" href="/admincraft/assets/js/6.7354eb5a.js"><link rel="prefetch" href="/admincraft/assets/js/7.bf12bc78.js"><link rel="prefetch" href="/admincraft/assets/js/8.ab9ad8aa.js"><link rel="prefetch" href="/admincraft/assets/js/9.dc6e2514.js">
+    <link rel="preload" href="/admincraft/assets/css/0.styles.8b4e8c53.css" as="style"><link rel="preload" href="/admincraft/assets/js/app.bc749d47.js" as="script"><link rel="preload" href="/admincraft/assets/js/3.7f93f48e.js" as="script"><link rel="prefetch" href="/admincraft/assets/js/10.5a8077f1.js"><link rel="prefetch" href="/admincraft/assets/js/2.28b4e99a.js"><link rel="prefetch" href="/admincraft/assets/js/4.b604e06f.js"><link rel="prefetch" href="/admincraft/assets/js/5.14ed9d0a.js"><link rel="prefetch" href="/admincraft/assets/js/6.7354eb5a.js"><link rel="prefetch" href="/admincraft/assets/js/7.e4b2ebaf.js"><link rel="prefetch" href="/admincraft/assets/js/8.ab9ad8aa.js"><link rel="prefetch" href="/admincraft/assets/js/9.dc6e2514.js">
     <link rel="stylesheet" href="/admincraft/assets/css/0.styles.8b4e8c53.css">
   </head>
   <body>
@@ -25,12 +25,9 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
  * $mount方法同样可以接收一个选择器字符串作为参数。
  **/</span>
 <span class="token keyword">let</span> admincraft <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Admincraft</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-  title<span class="token punctuation">:</span> <span class="token string">'admincraft'</span><span class="token punctuation">,</span>
-  logo<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    image<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span>
-    text<span class="token punctuation">:</span> <span class="token string">''</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  http<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+  theme<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    title<span class="token punctuation">:</span> <span class="token string">'应用名称'</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span>
 admincraft<span class="token punctuation">.</span><span class="token function">$mount</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
 </code></pre></div><p>刷新浏览器，此时应该可以看到 admincraft 的默认界面了。</p> <h3 id="路由配置"><a href="#路由配置" aria-hidden="true" class="header-anchor">#</a> 路由配置</h3> <p>通常我们使用 Vue 来做项目，实例化的同时就会传入 vue-router 配置。Admincraft 也是这么做的，只不过是发生在 Admincraft 内部，我们并不需要关心细节，而且借助于<code>addRoutes</code>API，我们可以在实例化之后再添加路由配置。</p> <p>通常我们新建一个路由配置文件，导出符合路由规范的数组。</p> <div class="tip custom-block"><p class="custom-block-title">TIP</p> <p>路由的 name 在 Admincraft 中非常重要。我们使用 name 进行路由导航，匹配菜单，匹配页签等，一定要记得配置，并且具有唯一性。</p></div> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// routes.js</span>
@@ -170,6 +167,6 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 </code></pre></div></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
-    <script src="/admincraft/assets/js/app.e6ccbcc6.js" defer></script><script src="/admincraft/assets/js/3.e7c32821.js" defer></script>
+    <script src="/admincraft/assets/js/app.bc749d47.js" defer></script><script src="/admincraft/assets/js/3.7f93f48e.js" defer></script>
   </body>
 </html>

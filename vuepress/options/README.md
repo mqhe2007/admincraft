@@ -22,23 +22,21 @@
 
 实例化数据会被保存在`$store.state.app.config`中，运行时可随时调用。
 
-### title
+### theme
+
+应用主题相关配置
+
+#### title
 
 - 类型 `{String} text`
 
 标题会反映在浏览器选项卡，页脚，logo（如果没有配置 logo 选项）。
 
-### logo
+#### logo
 
-- image
+- 类型 `{String} text`
 
-  - 类型 `{String} url`
-
-- text
-
-  - 类型 `{String} text`
-
-logo 可以自定义图片和文字内容。
+logo 可以自定义图片。
 
 ### router
 
@@ -132,7 +130,7 @@ let admincraft = new Admincraft({
       请求`失败`拦截器方法。
 
   - response
-  
+
     - success
 
       响应`成功`拦截器方法。

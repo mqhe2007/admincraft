@@ -80,12 +80,9 @@ document.body.appendChild(el)
  * $mount方法同样可以接收一个选择器字符串作为参数。
  **/
 let admincraft = new Admincraft({
-  title: 'admincraft',
-  logo: {
-    image: '',
-    text: ''
-  },
-  http: {}
+  theme: {
+    title: '应用名称'
+  }
 })
 admincraft.$mount(el)
 ```

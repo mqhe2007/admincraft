@@ -6,10 +6,6 @@ Admincraft.add(admincraftShowcase)
 let el = document.createElement('div')
 document.body.appendChild(el)
 let admincraft = new Admincraft({
-  title: 'SHOWCASE',
-  logo: {
-    text: 'SHOWCASE'
-  },
   http: {
     config: {},
     interceptor: context => {
@@ -30,6 +26,13 @@ let admincraft = new Admincraft({
           next()
         }
       }
+    }
+  },
+  theme: {
+    title: 'SHOWCASE',
+    logo: {
+      text: 'SHOWCASE',
+      image: ''
     }
   }
 })

@@ -3,26 +3,26 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import App from './App'
 import Meta from 'vue-meta'
-import methods from './methods'
+import AddMethods from './methods'
 import router from './router'
 import Store from './store'
 import layoutDefault from './layout/Default.vue'
 let addedModules = new Set()
 class Admincraft {
   constructor(config) {
+    Vue.component('layoutDefault', layoutDefault)
+    Vue.use(Meta)
     this.context = {}
-    this.context.config = config
     this.context.Vue = Vue
+    this.context.config = { http: {}, router: {}, theme: {}, ...config }
     this.context.router = router(VueRouter, this.context)
     this.context.store = Store(Vuex, this.context)
-    this.context.store.commit('app/setConfig', config)
-    this.context.Vue.component('layoutDefault', layoutDefault)
-    this.context.Vue.use(Meta)
-    methods(this.context)
+    this.context.store.commit('app/setConfig', this.context.config)
+    AddMethods(this.context)
     for (const moduleInit of addedModules) {
       moduleInit(this.context)
     }
-    return new Vue({
+    return new this.context.Vue({
       router: this.context.router,
       store: this.context.store,
       render: h => h(App)

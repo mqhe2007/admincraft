@@ -2,7 +2,7 @@ let eventMap = {}
 export default {
   emit(eventName, payload) {
     if (!eventMap[eventName])
-      return console.error(
+      return console.warn(
         `事件：${eventName}，被触发了，但是无监听者。事件内容为：${payload}`
       )
 
@@ -17,7 +17,7 @@ export default {
     }
   },
   off(eventName, handler) {
-    if (!handler) return console.error(`取消监听必须传入已被监听的事件处理函数`)
+    if (!handler) return console.warn(`取消监听必须传入已被监听的事件处理函数`)
     eventMap[eventName].delete(handler)
   },
   clean() {

@@ -121,38 +121,41 @@ this.$addStore('vuexModuleName', vuexModule, () => {})
 
 - 参数:
 
+  - {Object} component (必选)
+  
   - {String} position
-
-  - {Object} component
 
   - {Function} callback
 
 - 用法:
 
-  为预设的[动态组件区域](/appendix/#动态组件区域)添加组件
+  为预设的动态组件区域添加组件
 
 ```javascript
-this.$dynamicComponent.add('HEADER_RIGHT_MENUS', Component, () => {})
+import Component from './component.vue'
+this.$dynamicComponent.add(Component, 'HEADER_RIGHT_MENUS', () => {})
 ```
+
+如果不传 position 参数，组件会被添加到名为“GLOBAL”的位置。
 
 #### remove
 
 移除
 
 - 参数:
+  
+  - {String} componentName
 
   - {String} position
-
-  - {String} componentName
 
   - {Function} callback
 
 - 用法:
 
-  移除某个动态组件区域内的某个组件
+  移除某个动态组件区域内的某个组件，如果不传 position 参数，默认会去“GLOBAL”的位置查找。
 
 ```javascript
-this.$dynamicComponent.remove('HEADER_RIGHT_MENUS', 'componentName', () => {})
+this.$dynamicComponent.remove('componentName', 'HEADER_RIGHT_MENUS', () => {})
 ```
 
 ### app.$moduleLoader

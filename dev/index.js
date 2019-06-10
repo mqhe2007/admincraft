@@ -6,8 +6,8 @@ Admincraft.add(admincraftShowcase)
 let el = document.createElement('div')
 document.body.appendChild(el)
 let admincraft = new Admincraft({
+  title: 'SHOWCASE',
   http: {
-    config: {},
     interceptor: context => {
       return {
         response: {
@@ -27,13 +27,7 @@ let admincraft = new Admincraft({
         }
       }
     }
-  },
-  theme: {
-    title: 'SHOWCASE',
-    logo: {
-      text: 'SHOWCASE',
-      image: ''
-    }
   }
 })
 admincraft.$mount(el)
+admincraft.$http.get('aaaaaa')

@@ -1,18 +1,21 @@
 import axios from 'axios'
-
-export default (context) => {
+export default context => {
   const httpConfig = context.config.http
-  let instance = axios.create(httpConfig && httpConfig.config)
+  const requestConfig = httpConfig ? httpConfig.config : {}
+  for (let key in requestConfig) {
+    axios.defaults[key] = requestConfig[key]
+  }
+  
   if (httpConfig && httpConfig.interceptor) {
     const interceptor = httpConfig.interceptor(context)
-    instance.interceptors.request.use(
+    axios.interceptors.request.use(
       interceptor.request && interceptor.request.success,
       interceptor.request && interceptor.request.error
     )
-    instance.interceptors.response.use(
+    axios.interceptors.response.use(
       interceptor.response && interceptor.response.success,
       interceptor.response && interceptor.response.error
     )
   }
-  return instance
+  return axios
 }

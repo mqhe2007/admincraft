@@ -12,7 +12,7 @@ export default {
   metaInfo() {
     return {
       title: `${this.$route.meta.title || '未命名页面'}`,
-      titleTemplate: '%s | ' + this.$store.state.app.config.theme.title
+      titleTemplate: '%s | ' + this.$store.state.app.config.title
     }
   },
   data() {

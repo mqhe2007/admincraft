@@ -14,7 +14,7 @@ class Admincraft {
     Vue.use(Meta)
     this.context = {}
     this.context.Vue = Vue
-    this.context.config = { http: {}, router: {}, theme: {}, ...config }
+    this.context.config = { http: {}, router: {}, ...config }
     this.context.router = router(VueRouter, this.context)
     this.context.store = Store(Vuex, this.context)
     this.context.store.commit('app/setConfig', this.context.config)

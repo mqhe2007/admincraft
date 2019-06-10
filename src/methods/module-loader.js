@@ -1,6 +1,7 @@
 import {print} from '../tool/'
 export default context => moduleData => {
   if (typeof moduleData === 'object') {
+    /** 通过模块map集合加载模块 */
     let promiseAll = []
     for (let moduleName in moduleData) {
       if (!window[moduleName]) {
@@ -27,6 +28,7 @@ export default context => moduleData => {
     }
     return Promise.all(promiseAll)
   } else if (typeof moduleData === 'function') {
+    /** 通过模块初始化函数加载模块 */
     moduleData(context)
   } else {
     console.error('参数错误')

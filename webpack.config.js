@@ -2,9 +2,11 @@ const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
-const morePlugins = []
+
+/** 开发环境下使用html插件 */
+const dynamicPlugins = []
 if (process.env.NODE_ENV === 'development') {
-  morePlugins.push(
+  dynamicPlugins.push(
     new HtmlWebpackPlugin({
       title: '加载中……',
       template: 'dev/index.html'
@@ -77,5 +79,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin(), ...morePlugins]
+  plugins: [new CleanWebpackPlugin(), new VueLoaderPlugin(), ...dynamicPlugins]
 }

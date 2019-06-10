@@ -1,4 +1,4 @@
-// 方法
+/** 以vue插件方式注册方法 */
 import BScroll from 'better-scroll'
 import addRoutes from './add-routes'
 import addStore from './add-store'

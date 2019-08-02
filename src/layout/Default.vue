@@ -1,6 +1,5 @@
 <template>
-  <div class="ac-nolayout-tip"
-       v-else>
+  <div class="ac-nolayout-tip">
     <h1>Admincraft</h1>
     <h2>这里是默认布局，因为您还没有配置默认布局。更多信息请参考：<a href="https://mqhe2007.github.io/admincraft/api/#app-addlayout"
          target="_blank">添加布局</a></h2>

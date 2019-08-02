@@ -30,4 +30,3 @@ let admincraft = new Admincraft({
   }
 })
 admincraft.$mount(el)
-admincraft.$http.get('aaaaaa')

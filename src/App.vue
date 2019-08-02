@@ -35,9 +35,7 @@ export default {
       deep: true,
       immediate: true
     }
-  },
-  created() {},
-  methods: {}
+  }
 }
 </script>
 

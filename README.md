@@ -1,30 +1,26 @@
 # Admincraft
 
-Admincraft是一个支持模块化分布部署和加载的vue admin。（[微前端？](https://www.thoughtworks.com/radar/techniques/micro-frontends)）
+Admincraft 是一个 Vue 插件，让你使用微前端架构开发 Vue 应用。（[微前端？](https://www.thoughtworks.com/radar/techniques/micro-frontends)）
 
-Admincraft is a vue admin that supports modular distribution deployment and loading. ([Micro frontends?](https://www.thoughtworks.com/radar/techniques/micro-frontends))
-
-Admincraft 名称借鉴自“Minecraft”。也是希望 Admincraft 能够像“Minecraft”一样成为一个灵活强大的自由组合工具，为中后台应用的快速开发寻找一个新的方式。
+Admincraft 名称借鉴自“Minecraft”。
 
 ## 安装
 
 ```
-yarn add admincraft
+yarn add admincraft@next
 ```
 
 ## 快速开始
 
-``` javascript
-
-// 导入Admincraft构造函数
+```javascript
+// 导入插件
+import Vue from 'vue'
 import Admincraft from 'admincraft'
-// 创建挂载DOM
-let appElement = document.createElement('div')
-document.body.appendChild(appElement)
-// 实例化
-let admincraft = new Admincraft()
-admincraft.$mount(appElement)
-
+// 安装使用，配置项中router实例和store实例必传。
+Vue.use(Admincraft, { router, store })
+const app = new Vue({...})
+// 使用插件提供的能力
+app.$moduleLoader({
+  module1: '//domain.com/module1.js'
+})
 ```
-
-详细用法请阅读[使用文档](https://mqhe2007.github.io/admincraft/)

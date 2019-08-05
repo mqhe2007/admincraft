@@ -1,3 +1,5 @@
+> 有时候想的太多，导致事情变得很复杂，越来越难以解释清楚。admincraft以后将变得更加简单，专注于微前端的模块加载，接下来请关注admincraft-next分支。
+
 # Admincraft
 
 Admincraft是一个支持模块化分布部署和加载的vue admin。（[微前端？](https://www.thoughtworks.com/radar/techniques/micro-frontends)）

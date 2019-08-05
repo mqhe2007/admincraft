@@ -1,9 +1,11 @@
+import dynamicComponentStore from '../store/dynamicComponent'
 export default class DynamicComponent {
   constructor(store) {
+    store.registerModule('dynamicComponent', dynamicComponentStore)
     this.store = store
   }
   /** 添加动态组件方法 */
-  add(component, position, cb) {
+  add(component, position) {
     if (typeof component !== 'object')
       return console.error(`动态组件add方法至少接受一个组件对象参数。`)
     if (
@@ -20,10 +22,9 @@ export default class DynamicComponent {
       position,
       component
     })
-    if (cb && typeof cb === 'function') cb()
   }
   /** 删除动态组件方法 */
-  remove(name, position, cb) {
+  remove(name, position) {
     if (typeof name !== 'string')
       return console.error('动态组件remove方法至少接收一个组件名称参数。')
     if (typeof position === 'function') {
@@ -34,6 +35,5 @@ export default class DynamicComponent {
       position,
       name
     })
-    if (cb && typeof cb === 'function') cb()
   }
 }

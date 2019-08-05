@@ -1,7 +1,7 @@
-import {print} from '../tool/'
+import { print } from '../tool/'
 export default context => moduleData => {
   if (typeof moduleData === 'object') {
-    /** 通过模块map集合加载模块 */
+    /** 通过模块清单加载模块 */
     let promiseAll = []
     for (let moduleName in moduleData) {
       if (!window[moduleName]) {
@@ -14,7 +14,10 @@ export default context => moduleData => {
                 window[moduleName](context)
                 print(moduleName, '模块加载完毕')
               } else {
-                console.warn(moduleName, '模块注册失败，请检查模块名称和地址是否匹配。')
+                console.warn(
+                  moduleName,
+                  '模块注册失败，请检查模块名称和地址是否匹配。'
+                )
               }
               resolve()
             }
@@ -28,7 +31,7 @@ export default context => moduleData => {
     }
     return Promise.all(promiseAll)
   } else if (typeof moduleData === 'function') {
-    /** 通过模块初始化函数加载模块 */
+    /** 通过模块函数加载模块 */
     moduleData(context)
   } else {
     console.error('参数错误')

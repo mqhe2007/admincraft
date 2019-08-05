@@ -1,4 +1,2 @@
 import print from './print'
-export {
-  print
-}
+export { print }

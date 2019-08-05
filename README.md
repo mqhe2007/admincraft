@@ -4,6 +4,13 @@ Admincraft 是一个 Vue 插件，让你使用微前端架构开发 Vue 应用�
 
 Admincraft 名称借鉴自“Minecraft”。
 
+推荐使用`admincraft-cli`生成样板工程。
+
+```
+$ yarn global add admincraft-cli
+$ admincraft init
+```
+
 ## 安装
 
 ```

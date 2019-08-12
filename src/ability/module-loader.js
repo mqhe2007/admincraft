@@ -11,7 +11,10 @@ export default context => moduleData => {
             script.src = moduleData[moduleName]
             script.onload = () => {
               if (window[moduleName]) {
-                window[moduleName](context)
+                typeof window[moduleName] === 'function'
+                  ? window[moduleName](context)
+                  : window[moduleName].default(context)
+
                 print(moduleName, '模块加载完毕')
               } else {
                 console.warn(

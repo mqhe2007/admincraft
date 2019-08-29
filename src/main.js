@@ -19,14 +19,16 @@ class Admincraft {
     this.context.store = Store(Vuex, this.context)
     this.context.store.commit('app/setConfig', this.context.config)
     AddMethods(this.context)
-    for (const moduleInit of addedModules) {
-      moduleInit(this.context)
-    }
-    return new this.context.Vue({
+    const app = new Vue({
       router: this.context.router,
       store: this.context.store,
       render: h => h(App)
     })
+    this.context.app = app
+    for (const moduleInit of addedModules) {
+      moduleInit(this.context)
+    }
+    return app
   }
   static add(moduleInit) {
     addedModules.add(moduleInit)

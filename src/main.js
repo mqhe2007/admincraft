@@ -18,6 +18,8 @@ class Admincraft {
     this.context.router = router(VueRouter, this.context)
     this.context.store = Store(Vuex, this.context)
     this.context.store.commit('app/setConfig', this.context.config)
+    this.context.exclude = Admincraft.prototype.exclude
+    Vue.prototype.$context = this.context
     AddMethods(this.context)
     const app = new Vue({
       router: this.context.router,
@@ -25,13 +27,13 @@ class Admincraft {
       render: h => h(App)
     })
     this.context.app = app
-    for (const moduleInit of addedModules) {
-      moduleInit(this.context)
+    for (const moduleInitFunc of addedModules) {
+      moduleInitFunc(this.context)
     }
     return app
   }
-  static add(moduleInit) {
-    addedModules.add(moduleInit)
+  static add(moduleInitFunc) {
+    addedModules.add(moduleInitFunc)
   }
   static use(plugin, options) {
     Vue.use(plugin, options)

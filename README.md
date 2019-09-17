@@ -1,6 +1,6 @@
 # Admincraft
 
-Admincraft 是一个 Vue 插件，让你使用微前端架构开发 Vue 应用。（[微前端？](https://www.thoughtworks.com/radar/techniques/micro-frontends)）
+Admincraft 是一个 Vue 插件，让你使用类似于[微前端](https://www.thoughtworks.com/radar/techniques/micro-frontends)的架构开发 Vue 应用。
 
 Admincraft 名称借鉴自“Minecraft”。
 

@@ -1,9 +1,9 @@
 export default store => routes => {
   return permissionFilter(routes)
   /** 根据路由配置对象中的permissionTag进行过滤。 */
-  function permissionFilter(routes) {
+  function permissionFilter(_routes) {
     let newRoutes = []
-    routes.forEach(route => {
+    _routes.forEach(route => {
       if (route.meta.permissionTag) {
         if (
           store.state.main.user.permissionTags.find(

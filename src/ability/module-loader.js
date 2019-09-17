@@ -1,4 +1,4 @@
-import { print } from '../tool/'
+import { print } from '../tool/index'
 export default context => moduleData => {
   if (typeof moduleData === 'object') {
     /** 通过模块清单加载模块 */

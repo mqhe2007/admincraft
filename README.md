@@ -1,20 +1,18 @@
-# Admincraft
+# vue-module-loader
 
-Admincraft 是一个 Vue 插件，让你使用类似于[微前端](https://www.thoughtworks.com/radar/techniques/micro-frontends)的架构开发 Vue 应用。
-
-Admincraft 名称借鉴自“Minecraft”。
-
+vue-module-loader 是一个 Vue 插件，让你使用类似于[微前端](https://www.thoughtworks.com/radar/techniques/micro-frontends)的架构开发 Vue 应用。
+Let you use the micro front-end architecture to build Vue applications
 推荐使用`admincraft-cli`生成样板工程。
 
 ```
 $ yarn global add admincraft-cli
-$ admincraft init
+$ vmm init
 ```
 
 ## 安装
 
 ```
-yarn add admincraft@next
+yarn add vue-module-loader@next
 ```
 
 ## 快速开始
@@ -22,9 +20,9 @@ yarn add admincraft@next
 ```javascript
 // 导入插件
 import Vue from 'vue'
-import Admincraft from 'admincraft'
+import vueModuleLoader from 'vue-module-loader'
 // 安装使用，配置项中router实例和store实例必传。
-Vue.use(Admincraft, { router, store })
+Vue.use(vueModuleLoader, { router, store })
 const app = new Vue({...})
 // 使用插件提供的能力
 app.$moduleLoader({

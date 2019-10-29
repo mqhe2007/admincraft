@@ -1,14 +1,15 @@
 let eventMap = {}
 export default {
-  /** 事件触发 */
+  /**
+   * 发射事件
+   * @param {string} eventName 事件名称
+   * @param {any} payload 事件载荷
+   */
   emit(eventName, payload) {
     if (!eventMap[eventName])
-      return console.warn(
-        `事件：${eventName}，被触发了，但是无监听者。事件内容为：${payload}`
-      )
-
-    for (let item of eventMap[eventName].values()) {
-      item(payload)
+      return console.warn(`事件${eventName}被触发了，但是无监听者。`)
+    for (let func of eventMap[eventName].values()) {
+      func(payload)
     }
   },
   /** 事件监听 */

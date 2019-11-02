@@ -21,10 +21,13 @@
     "url": "https://github.com/mqhe2007/admincraft"
   },
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "doc:dev": "vuepress dev doc",
+    "doc:build": "vuepress build doc"
   },
   "dependencies": {},
   "devDependencies": {
-    "rollup-plugin-terser": "^5.1.2"
+    "rollup-plugin-terser": "^5.1.2",
+    "vuepress": "^1.2.0"
   }
 }

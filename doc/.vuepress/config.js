@@ -1,9 +1,9 @@
 const path = require('path')
 module.exports = {
-  base: '/admincraft/',
-  title: 'Admincraft',
-  dest: path.resolve(__dirname, '../../docs'),
-  description: '一个支持模块化分布部署和加载的 Vue Admin',
+  base: '/vue-module-loader/',
+  title: 'vue-module-loader',
+  dest: path.resolve(__dirname, '../../doc_dist'),
+  description: 'vue.js项目的微前端模块加载器',
   themeConfig: {
     sidebarDepth: 2,
     nav: [

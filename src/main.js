@@ -12,7 +12,13 @@ class Admincraft {
   constructor(config) {
     Vue.component('layoutDefault', layoutDefault)
     Vue.use(Meta)
-    this.context = {}
+    this.context = {
+      Vue: null,
+      config: null,
+      router: null,
+      store: null,
+      exclude: null
+    }
     this.context.Vue = Vue
     this.context.config = { http: {}, router: {}, ...config }
     this.context.router = router(VueRouter, this.context)

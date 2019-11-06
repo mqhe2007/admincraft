@@ -21,9 +21,9 @@ class Admincraft {
     }
     this.context.Vue = Vue
     this.context.config = { http: {}, router: {}, ...config }
-    this.context.router = router(VueRouter, this.context)
     this.context.store = Store(Vuex, this.context)
     this.context.store.commit('app/setConfig', this.context.config)
+    this.context.router = router(VueRouter, this.context)
     this.context.exclude = Admincraft.prototype.exclude
     Vue.prototype.$context = this.context
     AddMethods(this.context)

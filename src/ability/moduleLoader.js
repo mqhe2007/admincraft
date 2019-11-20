@@ -1,5 +1,5 @@
 import { print } from '../tool/index'
-export default context => moduleData => {
+export default function(moduleData) {
   if (typeof moduleData === 'object') {
     /** 通过模块清单加载模块 */
     let promiseAll = []
@@ -12,14 +12,14 @@ export default context => moduleData => {
             script.onload = () => {
               if (window[moduleName]) {
                 typeof window[moduleName] === 'function'
-                  ? window[moduleName](context)
-                  : window[moduleName].default(context)
+                  ? window[moduleName].call(this)
+                  : window[moduleName].default.call(this)
 
                 print(moduleName, '模块加载完毕')
               } else {
                 console.warn(
                   moduleName,
-                  '模块注册失败，请检查模块名称和地址是否匹配。'
+                  '模块加载失败，请检查模块资源是否成功加载。'
                 )
               }
               resolve()
@@ -35,8 +35,8 @@ export default context => moduleData => {
     return Promise.all(promiseAll)
   } else if (typeof moduleData === 'function') {
     /** 通过模块函数加载模块 */
-    moduleData(context)
+    moduleData.call(this)
   } else {
-    console.error('参数错误')
+    console.error('模块加载方法只接受模块列表对象或者模块函数对象作为参数。')
   }
 }

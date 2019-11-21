@@ -14,18 +14,18 @@ export default function(moduleData) {
                 typeof window[moduleName] === 'function'
                   ? window[moduleName].call(this)
                   : window[moduleName].default.call(this)
-
                 print(moduleName, '模块加载完毕')
               } else {
                 console.warn(
                   moduleName,
-                  '模块加载失败，请检查模块资源是否成功加载。'
+                  '模块加载失败，请检查模块资源是否成功加载。已跳过。'
                 )
               }
               resolve()
             }
             script.onerror = () => {
-              reject('创建模块脚本元素失败。')
+              console.warn(moduleName, ': 创建模块脚本元素失败。已跳过。')
+              resolve()
             }
             document.body.appendChild(script)
           })

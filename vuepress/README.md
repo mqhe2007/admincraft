@@ -13,6 +13,10 @@ features:
 footer: Copyright © 2019 mengqinghe.com
 ---
 
+:::warning
+本工具停止维护，请使用[vue-module-loader](https://mqhe2007.github.io/vue-module-loader/index.html)
+:::
+
 ## 使用简单
 
 #### 1. 安装 admincraft

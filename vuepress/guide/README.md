@@ -1,3 +1,6 @@
+:::warning
+本工具停止维护，请使用[vue-module-loader](https://mqhe2007.github.io/vue-module-loader/index.html)
+:::
 # 指南
 
 ::: warning

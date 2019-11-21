@@ -1,135 +1,129 @@
 # 指南
 
-::: warning
-开始使用 vue-module-loader 前，我们假设您已经拥有了使用 @vue/cli 开发项目的经验。如果还没有，请先阅读[文档](https://cli.vuejs.org/zh/)
-:::
+vue-module-loader 是基于 Vue 生态的微前端模块加载器，本质上是[Vue 插件](https://cn.vuejs.org/v2/guide/plugins.html)。
+使用了 vue-module-loader 的工程可以构建成独立的应用程序包部署运行，也可以加载其他[符合规范的微前端模块](https://cn.vuejs.org/v2/guide/plugins.html)，让你的工程秒变微前端架构。
 
-vue-module-loader 是基于Vue生态的微前端模块加载器，与[vue-micro-module]()工程配合使用，让你的工程秒变微前端架构。任何符合规范的模块工程，都能自由组合加载。
+## 快速上手
 
-## 必要依赖
+### 模板工程
 
-vue-module-loader 的正常运行必须依赖下列工具库。
+推荐使用`vue-module-cli`创建模板工程，已为您做好配置，可构建独立应用，也可构建微前端模块包。
 
-- [vue](https://cn.vuejs.org)
+基于[@vue/cli](https://cli.vuejs.org/zh/) 工程，使用了以下特性：
 
-- [vue-router](https://router.vuejs.org/zh/)
+- [构建目标-库](https://cli.vuejs.org/zh/guide/build-targets.html#%E5%BA%93)
+- [环境变量和模式](https://cli.vuejs.org/zh/guide/mode-and-env.html#%E6%A8%A1%E5%BC%8F)
 
-- [vuex](https://vuex.vuejs.org/zh/)
+1. 安装命令行工具
 
-## 加载一个模块
+   ```bash
+   yarn add vue-module-cli
+   ```
 
-应用运行时在任何时候可以通过实例方法[\$moduleLoader](/api/#app-moduleloader)进行加载。
+2. 创建工程
 
-## 编写一个模块
+   ```bash
+   vm create "dir"
+   ```
 
-### 模块是什么
+### 自由工程
 
-文件导出一个接收 vue-module-loader 实例上下文对象的函数，并且在函数内部合并数据的都算是一个模块。我们通常使用`/src/module-init.js`文件作为模块 build 入口文件。
+1. 安装插件
+
+   ```bash
+   yarn add vue-module-loader
+   ```
+
+2. 使用插件
+
+   ```js
+   import Vue from 'vue'
+   // 导入插件
+   import vueModuleLoader from 'vue-module-loader'
+   Vue.use(vueModuleLoader)
+
+   const app = new Vue({...})
+   // 加载模块
+   app.$moduleLoader({
+     module1: '//domain.com/module-a.js'
+   })
+   ```
+
+应用实例化后的任何时候可以通过插件方法[\$moduleLoader](/api/#app-moduleloader)进行加载。
+
+### 构建
+
+- 作为独立应用程序构建略过，请参考[@vue/cli 官方文档](https://cli.vuejs.org/zh/)
+- 作为微前端模块构建
+  ```bash
+  yarn build:module
+  ```
+  配置参考：[构建目标-库](https://cli.vuejs.org/zh/guide/build-targets.html)
+  微前端模块构建完成以后会得到一个 js 文件和静态资源，部署在服务器上即可引用加载。
+
+## 编写微前端模块
+
+下面介绍能够被`vue-module-loader`加载摸微前端模块规范。
+
+### 模块详解
+
+模块目录结构和官方@vue/cli 项目基本相同，只在入口文件和构建方面有些许差别，下面一一介绍：
+
+- **入口文件**
+
+**module.js**
+
+微前端模块新增了`/src/module.js`文件作为模块业务代码的入口文件，此文件导出一个匿名函数，函数内部调用`this`（Vue 实例）中安装的生态工具 API 进行数据合并。
 
 ```js
-// /src/module-init.js
-import LayoutFrame from '@/layout/Frame'
-import routes from '@/router/routes.js'
+// 模块的路由配置数组
+import routes from './routes.js'
+// store是以vuex module的形式进行导入使用
 import storeModule from './store'
-export default ({ Vue }) => {
-  Vue.prototype.$addLayout({ layoutDefault: LayoutFrame })
-  Vue.prototype.$addRoutes(routes)
-  Vue.prototype.$addStore('moduleName', storeModule)
-  Vue.prototype.$addMenus(routes)
+// 其他的导入内容
+// 模块信息
+const moduleInfo = require('../package.json')
+// 导出模块函数
+export default () => {
+  // 本函数中的this指向vue实例的引用
+  // 合并路由
+  this.$router.$addRoutes(routes)
+  // 合并状态
+  // 使用模块名当做vuex store模块的命名空间
+  this.$registerModule(moduleInfo.name, storeModule)
+  // 其他逻辑
 }
 ```
 
-借助于[Vue-cli](https://cli.vuejs.org/zh/)脚手架工具创建模块工程，我们很容易的把代码打包成一个 vue-module-loader 模块。
+**main.js**
 
-一个 vue-module-loader 模块就是一个打包成 umd 规范的 js 库及相关资源。
+原有的`src/main.js`依然是构建独立应用程序和本地开发服务的入口文件，要想程序正常运行，需要把上面的业务代码入口文件`src/module.js`导入进来。
 
-打包为库的配置请参考：[构建目标-库](https://cli.vuejs.org/zh/guide/build-targets.html)
+```js
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import vueModuleLoader from 'vue-module-loader'
+// 导入模块函数
+import aModule from './module'
+Vue.use(vueModuleLoader)
+const app = new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+// 加载模块
+app.$moduleLoader(aModule)
+```
 
-这里有一个带有完整演示的模块项目：[vue-module-loader-showcase](https://github.com/mqhe2007/vue-module-loader-showcase)
-
-### 目录约定
-
-:::tip
-注意，缩进代表目录层级。
+:::warning
+再次提醒：`src/main.js`文件只在构建为应用程序和本地开发时有效，构建成微前端模块时无效，所以当你的业务代码需要包含在微前端模块中时，应该导入`src/module.js`文件
 :::
 
-```
-dist ----------------- 编译完成后的发行代码目录
-node_modules --------- nodejs项目依赖安装目录
-public --------------- 不需要webpack打包的静态资源目录
-  libs --------------- 通过远程调用的第三方库目录
-  index.html --------- 开发预览的网页入口文件
-src ------------------ 源代码目录
-  assets ------------- 需要webpack打包编译的资源目录
-  components --------- 局部组件目录
-  layout ------------- 布局组件目录
-  router ------------- 路由配置目录
-    routes.js -------- 路由配置
-  store -------------- vuex状态管理配置
-    storeModule.js --- vuex状态模块化配置
-  views -------------- 视图组件目录，需要导入路由配置
-  App.vue ------------ Vue实例根组件
-  envConst ----------- 多环境常量配置
-  init.js ------------ 模块初始化文件，模块化打包的入口文件
-  libs.js ------------ 通过远程调用的第三方库清单文件
-  main.js ------------ 开发服务入口文件
-.browserslistrc ------ 浏览器支持情况配置
-.env.* --------------- 构建环境与模式配置
-.eslintrc.js --------- eslint的配置文件
-.gitignore ----------- git 提交忽略文件
-babel.config.js ------ babel编译配置文件
-package.json --------- npm包配置文件
-postcss.config.js ---- postcss样式处理配置文件
-README.md ------------ 自述文件
-vue.config.js -------- vue-cli配置文件
-yarn.lock ------------ npm依赖版本锁
-```
+### 模块部署（延展）
 
-### 依赖安装
-
-#### 公共依赖
-
-公共依赖是指大部分模块都要用到的依赖库，例如统一的 UI 组件库。这类公共依赖会在主框架模块中安装，业务模块开发时只需优先加载主框架模块，无需额外安装公共依赖。
-
-#### 私有依赖
-
-私有依赖是指只有业务模块自己要使用的依赖库。安装后导入为局部变量使用。
-
-### 模块打包
-
-下面是一个完整的模块打包入口例子：
-
-```javascript
-// /src/module-init.js
-// 导入模块数据
-import routes from './router/routes'
-import storeModule from './store/storeModule'
-
-// 从package.json中获取模块名称
-let moduleName = require('../package.json').name
-
-// 导出模块初始化函数
-export default context => {
-  // 注册路由
-  context.vue.prototype.$addRoutes(routes, () => {
-    console.log(moduleName + '：路由注册完成')
-  })
-
-  // 注册状态树
-  context.vue.prototype.$addStore(moduleName, storeModule, () => {
-    console.log(moduleName + '：状态注册完成')
-  })
-
-  // 注册菜单
-  context.vue.prototype.$addMenus(routes, () => {
-    console.log(moduleName + '：菜单注册完成')
-  })
-}
-```
-
-### 模块部署
-
-一个使用 nginx+jenkins 的模块部署过程如下：
+模块资源文件的部署没有统一标准，方式多种多样，一个使用 nginx+jenkins 的模块部署过程如下：
 
 #### 1. 新建模块虚拟机
 
@@ -139,13 +133,13 @@ export default context => {
 
 着重以下配置：
 
-```shell
+```sh
 server{
-  # 监听端口号。
-  listen 8081;
+  # 模块资源服务。
+  listen 8080;
   location / {
     # 虚拟机根目录，以模块名命名，用以存放构建生成的文件。
-    root /home/apps/<module_name>;
+    root /app_modules/<moduleName>;
   }
 }
 
@@ -155,57 +149,39 @@ server{
 
 登录 jenkins 构建工具创建新任务。
 
-##### 执行 shell 第一步
+##### 1. 执行 shell
 
 本段 shell 主要是模块打包命令，打包过程根据自己模块`package.json`中实际的脚本进行配置。
 
-```shell
+```sh
+# 打印node版本
 node -v
+# 打印yarn版本
 yarn -v
+# 安装依赖
 yarn
+# 执行构建脚本
 yarn build
 ```
 
-##### 执行 shell 第二步
+##### 2. 执行 shell
 
 把第一步打包完成的代码转移到部署服务器模块的虚拟机中。
 
 ```shell
-ssh user@xxx.xxx.xxx.xxx "cd /home/apps
+ssh user@xxx.xxx.xxx.xxx "cd /app_modules/
 rm -rf <module_name>
 mkdir <module_name>"
-scp -r ${WORKSPACE}/dist/* user@xxx.xxx.xxx.xxx:/home/apps/<module_name>
+scp -r ${WORKSPACE}/dist/* user@xxx.xxx.xxx.xxx:/app_modules/<module_name>
 ```
 
 #### 3. 验证模块地址
 
-等待 jenkins 任务执行完毕，尝试访问`http://xxx.xxx.xxx.xxx:8081/<module_name>.umd.js`，如果能访问成功，既模块部署成功。
+等待 jenkins 任务执行完毕，尝试访问
 
-### 模块开发
+`http://xxx.xxx.xxx.xxx:8080/<app_modules>/<module_name>.umd.js`
 
-从上文可知，代码打包成一个 vue-module-loader 模块可以用一个导出函数的入口文件`module-init.js`来实现。那作为一个 vue-module-loader 模块，我们如何去运行开发呢？
-
-其实很简单，像传统的 Vue 工程一样，我们从`main.js`文件出发。我们只需要在我们的 `main.js` 文件中导入模块要导出的初始化函数（`module-init.js` ）和 `vue-module-loader`，我们当前开发服务所运行的代码就是一个 vue-module-loader 项目，我们就可以使用 vue-module-loader 创建实例，并在[实例化前添加我们的模块](/api/#vue-module-loader-add)。
-
-```javascript
-// main.js
-import vue-module-loader from 'vue-module-loader'
-import showCase from './init'
-// 添加一个模块
-vue-module-loader.add(showCase)
-// 创建实例
-let appElement = document.createElement('div')
-let app = new vue-module-loader({
-  title: 'Showcase',
-  logo: { text: 'showcase演示' }
-})
-app.$mount(appElement)
-document.body.appendChild(app.$el)
-```
-
-然后，就能正常开发了，任何模块相关代码改动都会及时的更新在实例中。
-
-这样在开发阶段既能同步使用 vue-module-loader 提供的 API，组件，布局等能力，又能保证开发出的模块能完美被其他 vue-module-loader 项目加载。
+如果能访问成功，既模块部署成功。
 
 ## 事件总线
 

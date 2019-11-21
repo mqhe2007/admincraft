@@ -12,24 +12,8 @@ module.exports = {
         link: '/guide/'
       },
       {
-        text: '配置',
-        link: '/options/'
-      },
-      {
-        text: 'API',
+        text: 'API扩展',
         link: '/api/'
-      },
-      {
-        text: 'UI',
-        link: '/ui/'
-      },
-      {
-        text: '附录',
-        link: '/appendix/'
-      },
-      {
-        text: '常见问题',
-        link: '/qa/'
       },
       {
         text: 'github',
@@ -38,11 +22,7 @@ module.exports = {
     ],
     sidebar: {
       '/guide/': [''],
-      '/options/': [''],
-      '/api/': [''],
-      '/ui/': [''],
-      '/appendix/': [''],
-      '/qa/': ['']
+      '/api/': ['']
     }
   }
 }

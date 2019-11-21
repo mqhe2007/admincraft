@@ -1,4 +1,4 @@
-> 有时候想的太多，导致事情变得很复杂，越来越难以解释清楚。admincraft以后将变得更加简单，专注于微前端的模块加载，接下来请关注admincraft-next分支。
+> # 本工具停止维护，请使用[vue-module-loader](https://mqhe2007.github.io/vue-module-loader/index.html)
 
 # Admincraft
 

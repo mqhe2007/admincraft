@@ -60,5 +60,9 @@
   },
   "resolutions": {
     "webpack-dev-middleware": "3.6.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

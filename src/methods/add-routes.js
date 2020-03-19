@@ -1,4 +1,4 @@
-export default ({ router, store }) => (routes, cb) => {
+export default ({ router, store }) => routes => {
   if (!routes)
     return console.error('addRoutes方法至少接收一个vue-router路由配置数组。')
   let FilteredRoutes = permissionFilter(routes)
@@ -6,7 +6,7 @@ export default ({ router, store }) => (routes, cb) => {
   function permissionFilter(routes) {
     let newRoutes = []
     routes.forEach(route => {
-      if (route.meta.permissionTag) {
+      if (route.meta && route.meta.permissionTag) {
         if (
           store.state.main.user.permissionTags.find(
             item => item === route.meta.permissionTag
@@ -27,6 +27,4 @@ export default ({ router, store }) => (routes, cb) => {
     return newRoutes
   }
   router.addRoutes(FilteredRoutes)
-  /** 执行回调 */
-  if (cb && typeof cb === 'function') cb()
 }
